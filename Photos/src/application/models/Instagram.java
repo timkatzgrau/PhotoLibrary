@@ -1,0 +1,77 @@
+package application.models;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class Instagram implements Serializable {
+	
+	ArrayList<User> users;
+	
+	ArrayList<Photo> photos;
+	
+	ArrayList<Album> albums;
+	
+	public static Instagram instagram;
+	
+	User currentUser;
+	
+	public static Instagram getApp() {
+		if (instagram == null) {
+			instagram = new Instagram();
+			instagram.init();
+		}
+		
+		return instagram;
+	}
+	
+	public void init() {
+		//will initialize all fields
+	}
+	
+	public void authenticate(User user) {
+		currentUser = user;
+	}
+	
+	public void signOut() {
+		currentUser = null;
+	}
+	
+	public void createAlbum(String name) {
+		//get currently logged in user
+		//create album associated with currently logged in user
+	}
+	
+	public void deleteAlbum(String name) {
+		//get currently logged in user
+		//delete album associated with currently logged in user
+	}
+	
+	public void movePhotoTo(String photoLocation, Album fromAlbum, Album toAlbum) {
+		
+	}
+	
+	public void copyPhotoTo(String photoLocation, Album originAlbum, Album additionalAlbum) {
+		
+	}
+	
+	public void addPhoto(Photo photo, Album album) {
+		
+	}
+	
+	public void removePhoto(String photoLocation, Album album) {
+		
+	}
+	
+	public ArrayList<User> getUsers() {
+		return users;
+	}
+	
+	public void addUser(User user) {
+		
+	}
+	
+	public void removeUser(User user) {
+		
+	}
+
+}
