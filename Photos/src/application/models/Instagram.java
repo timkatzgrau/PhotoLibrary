@@ -60,9 +60,10 @@ public class Instagram implements Serializable {
 		//get currently logged in user
 		//create album associated with currently logged in user
 		Album album = new Album(name);
-		currentUser.albums.add(album);
+		currentUser.getAlbums().add(album);
 		albums.add(album);
 	}
+	
 	
 	public void deleteAlbum(String name) {
 		//get currently logged in user

@@ -6,15 +6,15 @@ import java.util.Calendar;
 
 public class Photo implements Serializable {
 	
-	public String filePath;
+	private String filePath;
 	
-	public User author;
+	private User author;
 	
-	public ArrayList<Tag> tags;
+	private ArrayList<Tag> tags;
 	
-	public Calendar date;
+	private Calendar date;
 	
-	public String caption;
+	private String caption;
 	
 	public void setCaption(String caption) {
 		this.caption = caption;
