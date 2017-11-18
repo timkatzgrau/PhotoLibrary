@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 public class Tag implements Serializable {
 	
-	String key;
+	public String key;
 	
-	String value;
+	public String value;
 	
 	public Tag (String key, String value) {
 		this.key = key;

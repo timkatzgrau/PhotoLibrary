@@ -14,7 +14,7 @@ public class Instagram implements Serializable {
 	
 	public static Instagram instagram;
 	
-	User currentUser;
+	public User currentUser;
 	
 	public static Instagram getApp() {
 		if (instagram == null) {
