@@ -27,6 +27,10 @@ public class Instagram implements Serializable {
 	
 	public void init() {
 		//will initialize all fields
+		//remember to change entire method
+		users = new ArrayList<User>();
+		photos = new ArrayList<Photo>();
+		albums = new ArrayList<Album>();
 	}
 	
 	public void authenticate(User user) {
