@@ -27,7 +27,7 @@ public class Instagram implements Serializable {
 	
 	public void init() {
 		//will initialize all fields
-		//remember to change entire method
+		//remember to change entire method for serializing
 		users = new ArrayList<User>();
 		photos = new ArrayList<Photo>();
 		albums = new ArrayList<Album>();
@@ -59,6 +59,9 @@ public class Instagram implements Serializable {
 	public void createAlbum(String name) {
 		//get currently logged in user
 		//create album associated with currently logged in user
+		Album album = new Album(name);
+		currentUser.albums.add(album);
+		albums.add(album);
 	}
 	
 	public void deleteAlbum(String name) {
