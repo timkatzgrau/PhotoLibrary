@@ -24,16 +24,12 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar.ButtonData;
+import application.models.*;
 
 public class ListController {
 	
+		@FXML TextField Login;
 
-	   @FXML ListView<String> listView;   
-	   @FXML ListView<String> songListView;
-		@FXML TextField Name;
-		@FXML TextField Artist;
-		@FXML TextField Album;
-		@FXML TextField Year;
 		
 		
 
@@ -41,8 +37,21 @@ public class ListController {
 	  
 	   
 	   public void goToUserView() throws Exception {
-		   Scene scene = PhotosApp.mainStage.getScene();
-		   PhotosApp.changeScene(scene, "nonAdminView");
+		   if(Login.getText().length() == 0) {
+			   Alert alert = new Alert(AlertType.INFORMATION);
+			   alert.setTitle("No Username Entered");
+			   alert.setHeaderText(
+					   "You must fill out the required field Username");
+			   alert.showAndWait();
+		   }else {
+			   String username = Login.getText();
+			   User user = Instagram.getApp().getUser(username);
+			   Instagram.getApp().authenticate(user);
+			   
+			   Scene scene = PhotosApp.mainStage.getScene();
+			   PhotosApp.changeScene(scene, "nonAdminView");
+		   }
+		   
 	   }
 	   
 	   public void start() {

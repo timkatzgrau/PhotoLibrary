@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import view.ListController;
 import view.UserViewController;
 import view.CopyAndMove;
+import application.models.*;
 import view.Create;
 import view.Tags;
 import view.Search;
@@ -24,7 +25,7 @@ public class PhotosApp extends Application {
 	
 	public void start(Stage primaryStage) 
 			throws Exception {
-
+			Instagram instagram = Instagram.getApp();
 			mainStage = primaryStage;
 			FXMLLoader loader = new FXMLLoader();   
 		      loader.setLocation(
