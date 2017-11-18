@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+
+<AnchorPane minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Tags">
+   <children>
+    <MenuBar>
+      <menus>
+        <Menu mnemonicParsing="false" text="Quit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+      <SplitPane dividerPositions="0.29797979797979796" prefHeight="600.0" prefWidth="900.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Button layoutX="207.0" layoutY="74.0" mnemonicParsing="false" text="Add" />
+                  <Button layoutX="78.0" layoutY="265.0" mnemonicParsing="false" text="Back to Menu" onAction="#goBack"/>
+                  <Label layoutX="22.0" layoutY="21.0" text="Add and Remove Tags" />
+                  <TextField layoutX="14.0" layoutY="74.0" />
+                  <Button layoutX="200.0" layoutY="125.0" mnemonicParsing="false" text="Delete" />
+                  <Label layoutX="67.0" layoutY="130.0" text="Select a Tag First to" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="456.0" prefWidth="485.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="241.0" layoutX="313.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="248.0" />
+                  <Separator layoutX="220.0" layoutY="1.0" orientation="VERTICAL" prefHeight="598.0" prefWidth="6.0" />
+                  <ListView layoutY="1.0" prefHeight="598.0" prefWidth="215.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

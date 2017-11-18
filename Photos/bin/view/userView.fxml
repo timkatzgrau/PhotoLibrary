@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9" fx:controller="view.UserViewController" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="428.0" layoutY="300.0" mnemonicParsing="false" text="Login" />
+      <TextField fx:id="Add" alignment="CENTER" layoutX="370.0" layoutY="263.0" promptText="Asad" />
+   </children>
+</AnchorPane>
