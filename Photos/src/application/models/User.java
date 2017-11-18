@@ -7,5 +7,9 @@ public class User implements Serializable {
 	String username;
 	
 	ArrayList<Album> albums;
+	
+	public User(String username) {
+		this.username = username;
+	}
 
 }

@@ -2,6 +2,7 @@ package application.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import application.models.*;
 
 public class Instagram implements Serializable {
 	
@@ -31,6 +32,21 @@ public class Instagram implements Serializable {
 	public void authenticate(User user) {
 		currentUser = user;
 	}
+	
+	public User getUser(String username) {
+		//being used currently for logging in and setting currentuser reference
+		for (int i = 0; i < users.size(); i++) {
+			if (users.get(i).username.equals(username)) {
+				return users.get(i);
+			}
+		}
+		
+		User user = new User(username);
+		users.add(user);
+		return user;
+		
+	}
+	
 	
 	public void signOut() {
 		currentUser = null;
