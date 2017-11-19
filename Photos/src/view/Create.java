@@ -5,7 +5,7 @@ package view;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Optional;
-
+import application.models.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.File;
@@ -27,13 +27,7 @@ import javafx.scene.control.ButtonBar.ButtonData;
 
 public class Create {
 	
-
-	   @FXML ListView<String> listView;   
-	   @FXML ListView<String> songListView;
 		@FXML TextField Name;
-		@FXML TextField Artist;
-		@FXML TextField Album;
-		@FXML TextField Year;
 
 	   private ObservableList<String> obsList;              
 	  
@@ -46,6 +40,36 @@ public class Create {
 	   public void goBack() throws Exception {
 		   Scene scene = PhotosApp.mainStage.getScene();
 		   PhotosApp.changeScene(scene, "nonAdminView");
+	   }
+	   
+	   public void SaveAlbum() throws Exception {
+		   String name = Name.getText();
+		   boolean nameExists = false;
+		   
+		   if(name.length() == 0) {
+			   Alert alert = new Alert(AlertType.INFORMATION);
+			   alert.setTitle("No Name Entered");
+			   alert.setHeaderText(
+					   "You must fill out the required field Name before saving");
+			   alert.showAndWait();
+		   }
+		   for(int i = 0; i < Instagram.getApp().currentUser.getAlbums().size(); i++) {
+			   if(Instagram.getApp().currentUser.getAlbums().get(i).name.equals(name)) {
+				   nameExists = true;
+				   break;
+			   }
+		   }
+		   if(nameExists) {
+			   Alert alert = new Alert(AlertType.INFORMATION);
+			   alert.setTitle("Name Exists");
+			   alert.setHeaderText(
+					   "Please choose another name.");
+			   alert.showAndWait();
+		   }else {
+			   Instagram.getApp().createAlbum(name);
+		   }
+
+		   
 	   }
 	   
 	  

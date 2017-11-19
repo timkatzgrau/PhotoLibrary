@@ -44,6 +44,7 @@ public class ListController {
 					   "You must fill out the required field Username");
 			   alert.showAndWait();
 		   }else {
+			   
 			   String username = Login.getText();
 			   User user = Instagram.getApp().getUser(username);
 			   Instagram.getApp().authenticate(user);

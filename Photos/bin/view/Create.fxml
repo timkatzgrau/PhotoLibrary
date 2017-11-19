@@ -30,8 +30,8 @@
             <Separator layoutX="227.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="609.0" prefWidth="12.0" />
             <Button layoutX="32.0" layoutY="334.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="150.0" text="Back to Menu" onAction="#goBack"/>
             <ImageView fitHeight="571.0" fitWidth="331.0" layoutX="233.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
-            <TextField layoutX="24.0" layoutY="197.0" promptText="Name" />
-            <Button layoutX="63.0" layoutY="246.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="Save" />
+            <TextField layoutX="24.0" layoutY="197.0" promptText="Name" fx:id="Name"/>
+            <Button layoutX="63.0" layoutY="246.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="Save" onAction="#SaveAlbum"/>
          </children>
       </Pane>
    </children>
