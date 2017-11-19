@@ -24,6 +24,7 @@ public class Album implements Serializable {
 	
 	public void setName(String name) {
 		this.name = name;
+		//REMEMBER TO SERIALIZE ON FX SIDE AFTER RENAME
 	}
 	
 	public ArrayList<Photo> getPhotos() {
