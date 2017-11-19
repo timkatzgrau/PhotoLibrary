@@ -6,11 +6,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Optional;
 
-
+import javafx.util.Callback;
 import java.io.File;
+import java.rmi.RemoteException;
+
 import application.PhotosApp;
 import application.models.Album;
 import application.models.Instagram;
+import application.models.Photo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -34,15 +37,27 @@ public class OpenAlbum {
 	   @FXML ImageView imageView;
 	   ArrayList<Image> listOfImages = new ArrayList<Image>();
 
-	   public ObservableList<String> obsList = FXCollections.observableArrayList();              
-	  
-	   public void start(Album album) {      
+	   public ObservableList<String> obsList = FXCollections.observableArrayList();   
+	   
+	   private void showItemInputDialog(Stage mainStage) {                
+		   int index = listView.getSelectionModel().getSelectedIndex();
+		   imageView.setImage(album.getPhotos().get(index).getImage());
+		  
+	   }
+	   public void start(Album album) {
+		// set listener for the items
+		      listView
+		        .getSelectionModel()
+		        .selectedIndexProperty()
+		        .addListener(
+		           (obs, oldVal, newVal) -> 
+		               showItemInputDialog(PhotosApp.mainStage));
 		   
 		   AlbumName.setText(album.toString());
 		   this.album = album;
 		   
 		   for(int i = 0; i < album.getPhotos().size(); i++) {
-			   obsList.add("");
+			   obsList.add(Integer.toString(obsList.size()));
 		   }
 		   
 		   for(int i = 0; i < album.getPhotos().size(); i++) {
@@ -52,24 +67,28 @@ public class OpenAlbum {
 		   
 		   listView.setItems(obsList);
 		   
-		      listView.setCellFactory(param -> new ListCell<String>() {
-		            private ImageView imageView = new ImageView();
-		            @Override
-		            public void updateItem(String name, boolean empty) {
-		                super.updateItem(name, empty);
-		                if (empty) {
-		                    setText(null);
-		                    setGraphic(null);
-		                } else 
-		                		for(int i = 0; i < listOfImages.size(); i++) {
-			                    imageView.setImage(listOfImages.get(i));
-			                    
-		                		}
-		                setText(name);
-	                    setGraphic(imageView);
-		                }
-		            }
-		        );
+		   listView.setCellFactory(param -> new ListCell<String>() {
+	            private ImageView imageView = new ImageView();
+	            @Override
+	            public void updateItem(String name, boolean empty) {
+	                super.updateItem(name, empty);
+	                if (empty) {
+	                    setText(null);
+	                    setGraphic(null);
+	                } else {
+	                	for(int i = 0; i < listOfImages.size(); i++) {
+	                		if(name.equals(Integer.toString(i))) {
+	                			imageView.setImage(listOfImages.get(i));
+	    	                    setText(name);
+	    	                    setGraphic(imageView);
+	                		}
+	                	}
+	                    
+
+	                }
+	            }
+	        });
+		       
 		   }
 
 	   
@@ -98,15 +117,16 @@ public class OpenAlbum {
 		   fileChooser.getExtensionFilters().addAll(
 		           new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
 		   File selectedFile = fileChooser.showOpenDialog(PhotosApp.mainStage);
-		   System.out.println(album.getPhotos().size());
 
 		   Instagram.getApp().addPhoto(selectedFile, album);
 		   
 		   System.out.println(album.getPhotos().size());
 		   
 		   Image image = new Image(selectedFile.toURI().toString(), 100, 100, false, false);
+		   
 		   listOfImages.add(image);
-		   obsList.add("");
+		   obsList.add(Integer.toString(obsList.size()));
+		   listView.setItems(obsList);
 		   listView.setCellFactory(param -> new ListCell<String>() {
 	            private ImageView imageView = new ImageView();
 	            @Override
@@ -116,21 +136,19 @@ public class OpenAlbum {
 	                    setText(null);
 	                    setGraphic(null);
 	                } else {
-	                	System.out.print("Poop");
-	                    imageView.setImage(listOfImages.get(listOfImages.size()-1));
+	                	for(int i = 0; i < listOfImages.size(); i++) {
+	                		if(name.equals(Integer.toString(i))) {
+	                			imageView.setImage(listOfImages.get(i));
+	    	                    setText(name);
+	    	                    setGraphic(imageView);
+	                		}
+	                	}
 	                    
-                		
-		                	setText(name);
-		            		setGraphic(imageView);
-	                			
-	                	
+
 	                }
-		                    
-	                }
-	            
-	            
 	            }
-	        );
+	        });
+	 
 	   }
 		   
 		   

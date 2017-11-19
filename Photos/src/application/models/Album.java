@@ -3,6 +3,8 @@ package application.models;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javafx.scene.image.Image;
+
 public class Album implements Serializable {
 	
 	public String name;
@@ -15,7 +17,7 @@ public class Album implements Serializable {
 	}
 	
 	public void addPhoto(Photo photo) {
-		
+		photos.add(photo);
 	}
 	
 	public void removePhoto(Photo photo) {
@@ -28,6 +30,7 @@ public class Album implements Serializable {
 	}
 	
 	public ArrayList<Photo> getPhotos() {
+		
 		return photos; //change this obviously
 	}
 	

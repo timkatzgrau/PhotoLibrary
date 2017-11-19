@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import javafx.scene.image.Image;
+
 public class Photo implements Serializable {
 	
 	private File photoFile;
@@ -12,6 +14,8 @@ public class Photo implements Serializable {
 	private User author;
 	
 	private ArrayList<Tag> tags;
+	
+
 	
 	private Calendar date;
 	
@@ -36,6 +40,11 @@ public class Photo implements Serializable {
 	
 	public void removeTag(Tag tag) {
 		tags.remove(tag);
+	}
+	
+	public Image getImage() {
+		Image image = new Image(photoFile.toURI().toString());
+		return image;
 	}
 
 }
