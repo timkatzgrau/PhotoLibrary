@@ -48,6 +48,34 @@ public class PhotosApp extends Application {
 			      
 
 	}
+	public static void changeScene(Scene stage, String s, Album album) throws Exception {
+		AnchorPane root;
+		if(s.equals("OpenAlbum")) {
+			System.out.println("test");
+			FXMLLoader loader = new FXMLLoader(); 
+
+			loader.setLocation(
+					PhotosApp.class.getResource("/view/OpenAlbum.fxml"));
+			root = (AnchorPane)loader.load();
+
+		    OpenAlbum openalbum = loader.getController();
+		    openalbum.start(album);
+	      
+		}else {
+			FXMLLoader loader = new FXMLLoader(); 
+
+			loader.setLocation(PhotosApp.class.getResource("/view/List.fxml"));
+			root = (AnchorPane)loader.load();
+
+		    ListController listController = loader.getController();
+	      
+			
+		}
+		Scene scene = new Scene(root, 900, 600);
+	      mainStage.setScene(scene);
+	      mainStage.setResizable(false);
+	      mainStage.show(); 
+	}
 	
 	public static void changeScene(Scene stage, String s) 
 			throws Exception {
@@ -80,16 +108,6 @@ public class PhotosApp extends Application {
 
 				    NonAdminViewController nonAdminViewController = loader.getController();
 				    nonAdminViewController.start();
-			      
-				}else if(s.equals("OpenAlbum")) {
-					FXMLLoader loader = new FXMLLoader(); 
-
-					loader.setLocation(
-							PhotosApp.class.getResource("/view/OpenAlbum.fxml"));
-					root = (AnchorPane)loader.load();
-
-				    OpenAlbum openalbum = loader.getController();
-				    openalbum.start();
 			      
 				}else if(s.equals("Search")) {
 					FXMLLoader loader = new FXMLLoader(); 

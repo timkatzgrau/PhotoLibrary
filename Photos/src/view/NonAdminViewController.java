@@ -51,8 +51,11 @@ public class NonAdminViewController {
 	   }
 	   
 	   public void openAlbum() throws Exception {
-		   Scene scene = PhotosApp.mainStage.getScene();
-		   PhotosApp.changeScene(scene, "OpenAlbum");
+		   int index = listView.getSelectionModel().getSelectedIndex();
+		   if(index >= 0) {
+			   Scene scene = PhotosApp.mainStage.getScene();
+			   PhotosApp.changeScene(scene, "OpenAlbum", Instagram.getApp().currentUser.getAlbums().get(index));
+		   }
 	   }
 	   public void Create() throws Exception {
 		   Scene scene = PhotosApp.mainStage.getScene();

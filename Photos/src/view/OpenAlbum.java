@@ -13,6 +13,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import application.Photo;
 import application.PhotosApp;
+import application.models.Album;
+import application.models.Instagram;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,25 +23,25 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.ButtonBar.ButtonData;
 
 public class OpenAlbum {
 	
 
-	   @FXML ListView<String> listView;   
-	   @FXML ListView<String> songListView;
-		@FXML TextField Name;
-		@FXML TextField Artist;
-		@FXML TextField Album;
-		@FXML TextField Year;
+	   @FXML Label AlbumName;
+	   Album album;
 
 	   private ObservableList<String> obsList;              
 	  
-	   public void start() {                
-		      // create an ObservableList 
-		      // from an ArrayList     
+	   public void start(Album album) {                
+		   AlbumName.setText(album.toString());
+		   this.album = album;
+		   
 
 	   }
 	   
@@ -60,6 +62,16 @@ public class OpenAlbum {
 	   public void Tags() throws Exception {
 		   Scene scene = PhotosApp.mainStage.getScene();
 		   PhotosApp.changeScene(scene, "Tags");
+	   }
+	   public void Add() throws Exception {
+		   FileChooser fileChooser = new FileChooser();
+		   fileChooser.setTitle("Open Resource File");
+		   fileChooser.getExtensionFilters().addAll(
+		           new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+		   File selectedFile = fileChooser.showOpenDialog(PhotosApp.mainStage);
+		   if (selectedFile != null) {
+		      Instagram.getApp().addPhoto(selectedFile, album);
+		   }
 	   }
 	   
 
