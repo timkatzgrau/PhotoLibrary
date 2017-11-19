@@ -22,6 +22,10 @@ public class Photo implements Serializable {
 		
 	}
 	
+	public File getPhotoFile() {
+		return photoFile;
+	}
+	
 	public void setCaption(String caption) {
 		this.caption = caption;
 	}
