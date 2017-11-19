@@ -65,9 +65,16 @@ public class Instagram implements Serializable {
 	}
 	
 	
-	public void deleteAlbum(String name) {
+	public void deleteAlbum(Album album) {
 		//get currently logged in user
 		//delete album associated with currently logged in user
+		currentUser.getAlbums().remove(album);
+		albums.remove(album);
+		
+	}
+	
+	public ArrayList<Album> getAllAlbums() {
+		return albums;
 	}
 	
 	public void movePhotoTo(String photoLocation, Album fromAlbum, Album toAlbum) {
