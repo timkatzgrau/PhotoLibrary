@@ -86,8 +86,12 @@ public class Instagram implements Serializable {
 		
 	}
 	
-	public void addPhoto(File photo, Album album) {
-		
+	public void addPhoto(File file, Album album) {
+		//add to insta photo list
+		//add to album
+		Photo photo = new Photo(file);
+		photos.add(photo);
+		album.getPhotos().add(photo);
 	}
 	
 	public void removePhoto(String photoLocation, Album album) {

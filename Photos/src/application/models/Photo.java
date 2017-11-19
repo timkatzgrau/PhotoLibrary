@@ -1,12 +1,13 @@
 package application.models;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Photo implements Serializable {
 	
-	private String filePath;
+	private File photoFile;
 	
 	private User author;
 	
@@ -15,6 +16,11 @@ public class Photo implements Serializable {
 	private Calendar date;
 	
 	private String caption;
+	
+	public Photo(File file) {
+		this.photoFile = file;
+		
+	}
 	
 	public void setCaption(String caption) {
 		this.caption = caption;
