@@ -18,7 +18,7 @@
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="900.0">
          <children>
-            <Button layoutX="61.0" layoutY="153.0" mnemonicParsing="false" text="Add Photo" onAction="#Add" />
+            <Button layoutX="61.0" layoutY="153.0" mnemonicParsing="false" text="Add Photo" onAction="#AddImage" />
             <Button layoutX="62.0" layoutY="193.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="82.0" text="Delete" />
             <Button layoutX="61.0" layoutY="231.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="82.0" text="Edit Tags" onAction="#Tags" />
             <Button layoutX="51.0" layoutY="271.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="102.0" text="Edit Caption" />
@@ -26,12 +26,12 @@
             <Button layoutX="61.0" layoutY="113.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="82.0" text="Slideshow" onAction="#Slideshow"/>
             <Button layoutX="41.0" layoutY="399.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="Back" onAction="#goBack"  />
             <Separator layoutX="387.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="6.0" />
-            <ImageView fitHeight="217.0" fitWidth="289.0" layoutX="488.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imageView" fitHeight="217.0" fitWidth="289.0" layoutX="488.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" />
             <TextArea layoutX="445.0" layoutY="407.0" prefHeight="137.0" prefWidth="374.0" promptText="Tags" text="" />
             <TextField layoutX="445.0" layoutY="353.0" prefHeight="27.0" prefWidth="374.0" promptText="Date" />
             <TextField layoutX="445.0" layoutY="305.0" prefHeight="27.0" prefWidth="374.0" promptText="Caption" />
             <Separator layoutX="188.0" layoutY="11.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="6.0" />
-            <ListView layoutX="188.0" layoutY="27.0" prefHeight="584.0" prefWidth="202.0" />
+            <ListView fx:id="listView" layoutX="188.0" layoutY="27.0" prefHeight="584.0" prefWidth="202.0" />
             <Label fx:id="AlbumName" layoutX="63.0" layoutY="61.0" text="Album Name" />
          </children>
       </AnchorPane>
