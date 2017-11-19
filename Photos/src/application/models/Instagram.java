@@ -1,5 +1,6 @@
 package application.models;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import application.models.*;
@@ -85,7 +86,7 @@ public class Instagram implements Serializable {
 		
 	}
 	
-	public void addPhoto(Photo photo, Album album) {
+	public void addPhoto(File photo, Album album) {
 		
 	}
 	
