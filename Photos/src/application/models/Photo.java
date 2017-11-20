@@ -34,6 +34,10 @@ public class Photo implements Serializable {
 		this.caption = caption;
 	}
 	
+	public String getCaption() {
+		return caption;
+	}
+	
 	public void addTag(Tag tag) {
 		tags.add(tag);
 	}
