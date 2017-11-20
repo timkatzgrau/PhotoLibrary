@@ -15,22 +15,18 @@ import application.PhotosApp;
 import application.models.Album;
 import application.models.Instagram;
 import application.models.Photo;
+import application.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
 import javafx.scene.control.*;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.control.ListCell;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.control.ButtonBar.ButtonData;
 
 public class OpenAlbum {
@@ -66,7 +62,7 @@ public class OpenAlbum {
 		   }
 		   
 		   for(int i = 0; i < album.getPhotos().size(); i++) {
-			   Image image = new Image(album.getPhotos().get(i).getPhotoFile().toURI().toString(), 100, 100, false, false);
+			   Image image = new Image(album.getPhotos().get(i).getPhotoFileURI(), 100, 100, false, false);
 			   listOfImages.add(image);
 		   }
 		   
@@ -102,54 +98,28 @@ public class OpenAlbum {
 		   Scene scene = PhotosApp.mainStage.getScene();
 		   PhotosApp.changeScene(scene, "nonAdminView");
 	   }
-	   public void EditCaption() throws Exception {
-		   
-		   int index = listView.getSelectionModel().getSelectedIndex();
-		   
-		   if(index >= 0) {
-			   TextInputDialog dialog = new TextInputDialog();
-			   dialog.setTitle("Edit Caption");
-			   dialog.setContentText("Please enter a caption:");
-	
-			   // Traditional way to get the response value.
-			   Optional<String> result = dialog.showAndWait();
-			   if (result.isPresent()){
-			       album.getPhotos().get(index).setCaption(result.toString().substring(9,result.toString().length()-1));
-			       Caption.setText(album.getPhotos().get(index).getCaption());
-			   }
-		   }else {
-			   System.out.println(obsList);
-		   }
-	   }
-	   public void Slideshow() throws Exception {
-		   Scene scene = PhotosApp.mainStage.getScene();
-		   PhotosApp.changeScene(scene, "Slideshow");
+	   
+	   public void DeletePhoto() throws Exception {
+		   int index = listView.getSelectionModel().getSelectedIndex();		  
+		   album.getPhotos().remove(index);
+		   reload();
 	   }
 	   
-	   public void CopyAndMove() throws Exception {
-		   Scene scene = PhotosApp.mainStage.getScene();
-		   PhotosApp.changeScene(scene, "CopyAndMove");
-	   }
-	   public void Tags() throws Exception {
-		   Scene scene = PhotosApp.mainStage.getScene();
-		   PhotosApp.changeScene(scene, "Tags");
-	   }
-	   public void AddImage() throws Exception {
-		   FileChooser fileChooser = new FileChooser();
-		   fileChooser.setTitle("Open Resource File");
-		   fileChooser.getExtensionFilters().addAll(
-		           new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
-		   File selectedFile = fileChooser.showOpenDialog(PhotosApp.mainStage);
-
-		   Instagram.getApp().addPhoto(selectedFile, album);
+	   public void reload() {
+		   obsList.clear();
+		   listOfImages.clear();
+		   listView.getItems().clear();
 		   
-		   System.out.println(album.getPhotos().size());
-		   
-		   Image image = new Image(selectedFile.toURI().toString(), 100, 100, false, false);
-		   
-		   listOfImages.add(image);
-		   obsList.add(Integer.toString(obsList.size()));
+		   for(int i = 0; i < album.getPhotos().size(); i++) {
+			   obsList.add(Integer.toString(obsList.size()));
+		   }
+		   for(int i = 0; i < album.getPhotos().size(); i++) {
+			   Image image = new Image(album.getPhotos().get(i).getPhotoFileURI(), 100, 100, false, false);
+			   listOfImages.add(image);
+		   }
+		    
 		   listView.setItems(obsList);
+		   
 		   listView.setCellFactory(param -> new ListCell<String>() {
 	            private ImageView imageView = new ImageView();
 	            @Override
@@ -171,7 +141,71 @@ public class OpenAlbum {
 	                }
 	            }
 	        });
-	 
+	   }
+	   public void EditCaption() throws Exception {
+		   
+		   int index = listView.getSelectionModel().getSelectedIndex();
+		   
+		   if(index >= 0) {
+			   TextInputDialog dialog = new TextInputDialog();
+			   dialog.setTitle("Edit Caption");
+			   dialog.setContentText("Please enter a caption:");
+	
+			   // Traditional way to get the response value.
+			   Optional<String> result = dialog.showAndWait();
+			   if (result.isPresent()){
+			       album.getPhotos().get(index).setCaption(result.toString().substring(9,result.toString().length()-1));
+			       Caption.setText(album.getPhotos().get(index).getCaption());
+			   }
+		   }else {
+			   System.out.println(obsList);
+		   }
+	   }
+	   public void Slideshow() throws Exception {
+			   if(album.getPhotos().size() == 0) {
+				   Alert alert = new Alert(AlertType.INFORMATION);
+				   alert.setTitle("No Photos");
+				   alert.setHeaderText(
+						   "This album has no photos to display.");
+				   alert.showAndWait();
+			   }else {
+				   Scene scene = PhotosApp.mainStage.getScene();
+				   PhotosApp.changeScene(scene, "Slideshow", album);
+			   }
+
+	   }
+	   
+	   public void CopyAndMove() throws Exception {
+		   int index = listView.getSelectionModel().getSelectedIndex();
+		   if(index < 0) {
+			   Alert alert = new Alert(AlertType.INFORMATION);
+			   alert.setTitle("No Photo Selected");
+			   alert.setHeaderText(
+					   "You must select a photo to move first.");
+			   alert.showAndWait();
+		   }else {
+			   application.models.Photo photo = album.getPhotos().get(index);
+			   Scene scene = PhotosApp.mainStage.getScene();
+			   PhotosApp.changeScene(scene, "CopyAndMove", photo, album);
+		   }
+
+	   }
+	   public void Tags() throws Exception {
+		   Scene scene = PhotosApp.mainStage.getScene();
+		   PhotosApp.changeScene(scene, "Tags");
+	   }
+	   public void AddImage() throws Exception {
+		   FileChooser fileChooser = new FileChooser();
+		   fileChooser.setTitle("Open Resource File");
+		   fileChooser.getExtensionFilters().addAll(
+		           new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+		   File selectedFile = fileChooser.showOpenDialog(PhotosApp.mainStage);
+
+		   Instagram.getApp().addPhoto(selectedFile, album);
+		   
+		   System.out.println(album.getPhotos().size());
+		   
+		   reload();
 	   }
 		   
 		   

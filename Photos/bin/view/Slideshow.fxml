@@ -13,10 +13,10 @@
    <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="600.0" prefWidth="900.0">
          <children>
-            <Button layoutX="101.0" layoutY="184.0" mnemonicParsing="false" text="Previous" />
-            <Button layoutX="700.0" layoutY="184.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="71.0" text="Next" />
+            <Button layoutX="101.0" layoutY="184.0" mnemonicParsing="false" onAction="#Previous" text="Previous" />
+            <Button layoutX="700.0" layoutY="184.0" mnemonicParsing="false" prefHeight="27.0" onAction="#Next" prefWidth="71.0" text="Next" />
             <Button layoutX="399.0" layoutY="371.0" mnemonicParsing="false" text="Back to Menu" onAction="#goBack"/>
-            <ImageView fitHeight="261.0" fitWidth="348.0" layoutX="268.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="Display" fitHeight="261.0" fitWidth="348.0" layoutX="268.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
          </children>
     </AnchorPane>
     <MenuBar prefHeight="29.0" prefWidth="900.0">

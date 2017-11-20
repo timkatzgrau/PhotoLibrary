@@ -9,6 +9,7 @@ import view.ListController;
 import view.UserViewController;
 import view.CopyAndMove;
 import application.models.*;
+import application.models.Photo;
 import view.Create;
 import view.Tags;
 import view.Search;
@@ -52,6 +53,32 @@ public class PhotosApp extends Application {
 			      
 
 	}
+	public static void changeScene(Scene stage, String s, application.models.Photo photo, Album album) throws Exception{
+		AnchorPane root;
+		if(s.equals("CopyAndMove")) {
+			FXMLLoader loader = new FXMLLoader(); 
+
+			loader.setLocation(
+					PhotosApp.class.getResource("/view/CopyAndMove.fxml"));
+			root = (AnchorPane)loader.load();
+
+		    CopyAndMove copyandmove = loader.getController();
+		    copyandmove.start(photo,album);
+	      
+		}else {
+			FXMLLoader loader = new FXMLLoader(); 
+
+			loader.setLocation(PhotosApp.class.getResource("/view/List.fxml"));
+			root = (AnchorPane)loader.load();
+
+	      
+			
+		}
+		Scene scene = new Scene(root, 900, 600);
+	      mainStage.setScene(scene);
+	      mainStage.setResizable(false);
+	      mainStage.show(); 
+	}
 	public static void changeScene(Scene stage, String s, Album album) throws Exception {
 		AnchorPane root;
 		if(s.equals("OpenAlbum")) {
@@ -64,6 +91,16 @@ public class PhotosApp extends Application {
 
 		    OpenAlbum openalbum = loader.getController();
 		    openalbum.start(album);
+	      
+		}else if(s.equals("Slideshow")) {
+			FXMLLoader loader = new FXMLLoader(); 
+
+			loader.setLocation(
+					PhotosApp.class.getResource("/view/Slideshow.fxml"));
+			root = (AnchorPane)loader.load();
+
+		    Slideshow slideshow = loader.getController();
+		    slideshow.start(album);
 	      
 		}else {
 			FXMLLoader loader = new FXMLLoader(); 
@@ -132,26 +169,6 @@ public class PhotosApp extends Application {
 
 				    Tags tag = loader.getController();
 				    tag.start();
-			      
-				}else if(s.equals("Slideshow")) {
-					FXMLLoader loader = new FXMLLoader(); 
-
-					loader.setLocation(
-							PhotosApp.class.getResource("/view/Slideshow.fxml"));
-					root = (AnchorPane)loader.load();
-
-				    Slideshow slideshow = loader.getController();
-				    slideshow.start();
-			      
-				}else if(s.equals("CopyAndMove")) {
-					FXMLLoader loader = new FXMLLoader(); 
-
-					loader.setLocation(
-							PhotosApp.class.getResource("/view/CopyAndMove.fxml"));
-					root = (AnchorPane)loader.load();
-
-				    CopyAndMove copyandmove = loader.getController();
-				    copyandmove.start();
 			      
 				}else if(s.equals("Create")) {
 					FXMLLoader loader = new FXMLLoader(); 
