@@ -13,6 +13,10 @@ public class Tag implements Serializable {
 		this.value = value;
 	}
 	
+	public String toString() {
+		return "(" + key + ", " + value + ")";
+	}
+
 	public boolean equals(Object o) {
 		Tag tag = (Tag)o;
 		

@@ -44,6 +44,10 @@ public class Photo implements Serializable {
 		tags.remove(tag);
 	}
 	
+	public ArrayList<Tag> getTags() {
+		return tags;
+	}
+
 	public Image getImage() {
 		Image image = new Image(photoFileURI);
 		return image;
