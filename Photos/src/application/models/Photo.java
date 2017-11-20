@@ -15,8 +15,6 @@ public class Photo implements Serializable {
 	
 	private ArrayList<Tag> tags;
 	
-
-	
 	private Calendar date;
 	
 	private String caption;
