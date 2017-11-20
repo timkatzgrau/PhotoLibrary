@@ -21,7 +21,7 @@ public class Photo implements Serializable {
 	
 	public Photo(File file) {
 		photoFileURI = file.toURI().toString();
-		
+		tags = new ArrayList<Tag>();
 	}
 	
 	public String getPhotoFileURI() {
