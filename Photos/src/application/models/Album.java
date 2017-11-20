@@ -35,7 +35,7 @@ public class Album implements Serializable {
 	}
 	
 	public String toString() {
-		return name + " " + photos.size() + " photos";
+		return name;
 	}
 	
 
