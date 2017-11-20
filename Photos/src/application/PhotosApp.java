@@ -25,6 +25,8 @@ public class PhotosApp extends Application {
 	
 	public void start(Stage primaryStage) 
 			throws Exception {
+//			Instagram instagram = Instagram.getApp();
+			Instagram.create();
 			Instagram instagram = Instagram.getApp();
 			mainStage = primaryStage;
 			FXMLLoader loader = new FXMLLoader();   

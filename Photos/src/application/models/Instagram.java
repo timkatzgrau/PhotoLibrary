@@ -1,11 +1,19 @@
 package application.models;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import application.models.*;
 
 public class Instagram implements Serializable {
+	
+	public static final String storeDir = "dat";
+	public static final String storeFile = "database.dat";
 	
 	ArrayList<User> users;
 	
@@ -16,6 +24,10 @@ public class Instagram implements Serializable {
 	public static Instagram instagram;
 	
 	public User currentUser;
+	
+	public static void create() throws ClassNotFoundException, IOException {
+		instagram = readApp();
+	}
 	
 	public static Instagram getApp() {
 		if (instagram == null) {
@@ -33,6 +45,22 @@ public class Instagram implements Serializable {
 		photos = new ArrayList<Photo>();
 		albums = new ArrayList<Album>();
 	}
+	
+	public static void writeApp(Instagram iapp) throws IOException {
+		 ObjectOutputStream oos = new ObjectOutputStream(
+		 new FileOutputStream(storeDir + File.separator + storeFile));
+		 oos.writeObject(iapp);
+	}
+	
+	//what is returned on the very first start
+	public static Instagram readApp()
+			throws IOException, ClassNotFoundException {
+			ObjectInputStream ois = new ObjectInputStream(
+			new FileInputStream(storeDir + File.separator + storeFile));
+			Instagram iapp = (Instagram)ois.readObject();
+			System.out.println(iapp);
+			return iapp;
+	} 
 	
 	public void authenticate(User user) {
 		currentUser = user;
