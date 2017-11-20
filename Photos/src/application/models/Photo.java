@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
 
 public class Photo implements Serializable {
 	
-	private File photoFile;
+	private String photoFileURI;
 	
 	private User author;
 	
@@ -22,12 +22,12 @@ public class Photo implements Serializable {
 	private String caption;
 	
 	public Photo(File file) {
-		this.photoFile = file;
+		photoFileURI = file.toURI().toString();
 		
 	}
 	
-	public File getPhotoFile() {
-		return photoFile;
+	public String getPhotoFileURI() {
+		return photoFileURI;
 	}
 	
 	public void setCaption(String caption) {
@@ -47,7 +47,7 @@ public class Photo implements Serializable {
 	}
 	
 	public Image getImage() {
-		Image image = new Image(photoFile.toURI().toString());
+		Image image = new Image(photoFileURI);
 		return image;
 	}
 
