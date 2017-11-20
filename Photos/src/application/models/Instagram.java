@@ -109,12 +109,14 @@ public class Instagram implements Serializable {
 		return albums;
 	}
 	
-	public void movePhotoTo(String photoLocation, Album fromAlbum, Album toAlbum) {
+	public void movePhotoTo(Photo photo, Album fromAlbum, Album toAlbum) {
+		fromAlbum.getPhotos().remove(photo);
+		toAlbum.getPhotos().add(photo);
 		
 	}
 	
-	public void copyPhotoTo(String photoLocation, Album originAlbum, Album additionalAlbum) {
-		
+	public void copyPhotoTo(Photo photo, Album additionalAlbum) {
+		additionalAlbum.getPhotos().add(photo);
 	}
 	
 	public void addPhoto(File file, Album album) {
