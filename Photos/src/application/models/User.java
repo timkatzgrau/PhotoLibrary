@@ -17,4 +17,8 @@ public class User implements Serializable {
 		return albums;
 	}
 
+	public String toString() {
+		return username;
+	}
+
 }
