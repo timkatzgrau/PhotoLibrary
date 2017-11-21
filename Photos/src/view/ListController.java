@@ -44,13 +44,19 @@ public class ListController {
 					   "You must fill out the required field Username");
 			   alert.showAndWait();
 		   }else {
+			   if(Login.getText().toLowerCase().equals("admin")) {
+				   Scene scene = PhotosApp.mainStage.getScene();
+				   PhotosApp.changeScene(scene, "AdminView");				   
+			   }else {
+				   
+				   String username = Login.getText();
+				   User user = Instagram.getApp().getUser(username);
+				   Instagram.getApp().authenticate(user);
+				   
+				   Scene scene = PhotosApp.mainStage.getScene();
+				   PhotosApp.changeScene(scene, "nonAdminView");
 			   
-			   String username = Login.getText();
-			   User user = Instagram.getApp().getUser(username);
-			   Instagram.getApp().authenticate(user);
-			   
-			   Scene scene = PhotosApp.mainStage.getScene();
-			   PhotosApp.changeScene(scene, "nonAdminView");
+			   }
 		   }
 		   
 	   }

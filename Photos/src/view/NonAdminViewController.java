@@ -41,6 +41,7 @@ public class NonAdminViewController {
 		   for(int i = 0; i < Instagram.getApp().currentUser.getAlbums().size(); i++) {
 			   obsList.add(Instagram.getApp().currentUser.getAlbums().get(i).toString());
 		   }
+		   
 		   listView.setItems(obsList);
 
 	   }

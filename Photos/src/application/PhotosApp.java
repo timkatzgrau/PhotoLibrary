@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import view.ListController;
 import view.UserViewController;
+import view.Admin;
 import view.CopyAndMove;
 import application.models.*;
 import application.models.Photo;
@@ -158,6 +159,16 @@ public class PhotosApp extends Application {
 					root = (AnchorPane)loader.load();
 
 				    NonAdminViewController nonAdminViewController = loader.getController();
+				    nonAdminViewController.start();
+			      
+				}else if(s.equals("AdminView")) {
+					FXMLLoader loader = new FXMLLoader(); 
+
+					loader.setLocation(
+							PhotosApp.class.getResource("/view/Admin.fxml"));
+					root = (AnchorPane)loader.load();
+
+				    Admin nonAdminViewController = loader.getController();
 				    nonAdminViewController.start();
 			      
 				}else if(s.equals("Search")) {
