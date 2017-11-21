@@ -15,6 +15,7 @@ import application.PhotosApp;
 import application.models.Album;
 import application.models.Instagram;
 import application.models.Photo;
+import application.models.Tag;
 import application.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,22 +28,36 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.ButtonBar.ButtonData;
 
 public class OpenAlbum {
 	
 	   @FXML ListView<String> listView; 
 	   @FXML TextField Caption;
+	   @FXML TextField Date;
+	   @FXML TextArea Tags;
 	   @FXML Label AlbumName;
 	   Album album;
 	   @FXML ImageView imageView;
 	   ArrayList<Image> listOfImages = new ArrayList<Image>();
 
-	   public ObservableList<String> obsList = FXCollections.observableArrayList();   
+	   public ObservableList<String> obsList = FXCollections.observableArrayList();  
+	   public ObservableList<Tag> tagList = FXCollections.observableArrayList();  
 	   
-	   private void showItemInputDialog(Stage mainStage) {                
+	   
+	   private void showItemInputDialog(Stage mainStage) {    
+		   tagList.clear();
+		   
 		   int index = listView.getSelectionModel().getSelectedIndex();
 		   imageView.setImage(album.getPhotos().get(index).getImage());
+		   Caption.setText(album.getPhotos().get(index).getCaption());
+		   Date.setText(album.getPhotos().get(index).stringDate);
+		   for(int i = 0; i < album.getPhotos().get(index).getTags().size(); i++) {
+		   		tagList.add(album.getPhotos().get(index).getTags().get(i));
+		   }
+		   Tags.setText(tagList.toString());
+		   
 		  
 	   }
 	   public void start(Album album) {
