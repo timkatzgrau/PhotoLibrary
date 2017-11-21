@@ -142,8 +142,8 @@ public class Instagram implements Serializable {
 			for (int j = 0; j < currentUser.getAlbums().get(i).getPhotos().size(); j++) {
 				for (int z = 0; z < searchParams.length; z++) {
 					boolean found = false;
-					for (int y = 0; y < currentUser.getAlbums().get(i).getPhotos().get(y).getTags().size(); y++) {
-						if (currentUser.getAlbums().get(i).getPhotos().get(y).getTags().get(y).key.equals(searchParams[z].key) && currentUser.getAlbums().get(i).getPhotos().get(y).getTags().get(y).value.equals(searchParams[z].value)){
+					for (int y = 0; y < currentUser.getAlbums().get(i).getPhotos().get(j).getTags().size(); y++) {
+						if (currentUser.getAlbums().get(i).getPhotos().get(j).getTags().get(y).key.equals(searchParams[z].key) && currentUser.getAlbums().get(i).getPhotos().get(j).getTags().get(y).value.equals(searchParams[z].value)){
 							found = true;
 						}
 					}
