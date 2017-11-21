@@ -145,10 +145,6 @@ public class Instagram implements Serializable {
 		album.getPhotos().add(photo);
 	}
 	
-	public void removePhoto(String photoLocation, Album album) {
-		
-	}
-	
 	public ArrayList<User> getUsers() {
 		return users;
 	}
@@ -200,11 +196,11 @@ public class Instagram implements Serializable {
 	}
 	
 	public void addUser(User user) {
-		
+		users.add(user);
 	}
 	
 	public void removeUser(User user) {
-		
+		users.remove(user);
 	}
 
 }
