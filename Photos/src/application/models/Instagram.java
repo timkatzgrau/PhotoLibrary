@@ -7,7 +7,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 import application.models.*;
 
 public class Instagram implements Serializable {
@@ -96,6 +100,19 @@ public class Instagram implements Serializable {
 		albums.add(album);
 	}
 	
+	public void createAlbum(String name, ArrayList<Photo> searchResults) {
+		//get currently logged in user
+		//create album associated with currently logged in user
+		
+		Album album = new Album(name);
+		currentUser.getAlbums().add(album);
+		albums.add(album);
+		for(int i = 0; i < searchResults.size(); i++) {
+			album.addPhoto(searchResults.get(i));
+		}
+	}
+	
+	
 	
 	public void deleteAlbum(Album album) {
 		//get currently logged in user
@@ -123,6 +140,7 @@ public class Instagram implements Serializable {
 		//add to insta photo list
 		//add to album
 		Photo photo = new Photo(file);
+		
 		photos.add(photo);
 		album.getPhotos().add(photo);
 	}
@@ -156,6 +174,29 @@ public class Instagram implements Serializable {
 		}
 		
 		return haveTags;
+	}
+	
+	public ArrayList<Photo> searchByDates(String startDate, String endDate) throws ParseException {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		Date sDate = sdf.parse(startDate);
+		long sMillis = sDate.getTime();
+		
+		Date eDate = sdf.parse(endDate);
+		long eMillis = eDate.getTime();
+		
+		ArrayList<Photo> haveDates = new ArrayList<Photo>();
+		
+		for (int i = 0; i < currentUser.getAlbums().size(); i++) {
+			for (int j = 0; j < currentUser.getAlbums().get(i).getPhotos().size(); j++) {
+				System.out.println(sMillis + ", " + currentUser.getAlbums().get(i).getPhotos().get(j).date + ", " + eMillis);
+				if (currentUser.getAlbums().get(i).getPhotos().get(j).date < eMillis && currentUser.getAlbums().get(i).getPhotos().get(j).date > sMillis) {
+					haveDates.add(currentUser.getAlbums().get(i).getPhotos().get(j));
+				}
+			}
+		}
+		
+		return haveDates;
 	}
 	
 	public void addUser(User user) {

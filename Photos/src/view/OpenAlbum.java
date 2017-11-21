@@ -191,8 +191,21 @@ public class OpenAlbum {
 
 	   }
 	   public void Tags() throws Exception {
-		   Scene scene = PhotosApp.mainStage.getScene();
-		   PhotosApp.changeScene(scene, "Tags");
+		   
+		   int index = listView.getSelectionModel().getSelectedIndex();
+		   
+		   if(index < 0) {
+			   Alert alert = new Alert(AlertType.INFORMATION);
+			   alert.setTitle("No Photo Selected");
+			   alert.setHeaderText(
+					   "You must select a photo to move first.");
+			   alert.showAndWait();
+		   }else {
+			   application.models.Photo photo = album.getPhotos().get(index);
+			   Scene scene = PhotosApp.mainStage.getScene();
+			   PhotosApp.changeScene(scene, "Tags", photo, album);
+		   }
+
 	   }
 	   public void AddImage() throws Exception {
 		   FileChooser fileChooser = new FileChooser();
@@ -200,12 +213,15 @@ public class OpenAlbum {
 		   fileChooser.getExtensionFilters().addAll(
 		           new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
 		   File selectedFile = fileChooser.showOpenDialog(PhotosApp.mainStage);
+		   
+		   if(selectedFile != null) {
+			   Instagram.getApp().addPhoto(selectedFile, album);
+			   
+			   System.out.println(album.getPhotos().size());
+			   
+			   reload(); 
+		   }
 
-		   Instagram.getApp().addPhoto(selectedFile, album);
-		   
-		   System.out.println(album.getPhotos().size());
-		   
-		   reload();
 	   }
 		   
 		   

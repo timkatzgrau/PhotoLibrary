@@ -65,6 +65,16 @@ public class PhotosApp extends Application {
 		    CopyAndMove copyandmove = loader.getController();
 		    copyandmove.start(photo,album);
 	      
+		}else if(s.equals("Tags")) {
+			FXMLLoader loader = new FXMLLoader(); 
+
+			loader.setLocation(
+					PhotosApp.class.getResource("/view/Tags.fxml"));
+			root = (AnchorPane)loader.load();
+
+		    Tags tag = loader.getController();
+		    tag.start(photo, album);
+	      
 		}else {
 			FXMLLoader loader = new FXMLLoader(); 
 
@@ -159,16 +169,6 @@ public class PhotosApp extends Application {
 
 				    Search search = loader.getController();
 				    search.start();
-			      
-				}else if(s.equals("Tags")) {
-					FXMLLoader loader = new FXMLLoader(); 
-
-					loader.setLocation(
-							PhotosApp.class.getResource("/view/Tags.fxml"));
-					root = (AnchorPane)loader.load();
-
-				    Tags tag = loader.getController();
-				    tag.start();
 			      
 				}else if(s.equals("Create")) {
 					FXMLLoader loader = new FXMLLoader(); 

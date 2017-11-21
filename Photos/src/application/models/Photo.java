@@ -2,6 +2,7 @@ package application.models;
 
 import java.io.File;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -15,13 +16,20 @@ public class Photo implements Serializable {
 	
 	private ArrayList<Tag> tags;
 	
-	private Calendar date;
+	public String stringDate;
+	public long date;
+	
 	
 	private String caption;
 	
 	public Photo(File file) {
 		photoFileURI = file.toURI().toString();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		date = file.lastModified();
+		stringDate = sdf.format(date);
 		tags = new ArrayList<Tag>();
+		
+		
 	}
 	
 	public String getPhotoFileURI() {

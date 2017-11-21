@@ -18,6 +18,7 @@ public class Album implements Serializable {
 	
 	public void addPhoto(Photo photo) {
 		photos.add(photo);
+		
 	}
 	
 	public void removePhoto(Photo photo) {

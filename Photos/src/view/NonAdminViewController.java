@@ -71,7 +71,6 @@ public class NonAdminViewController {
 		   Instagram.getApp().deleteAlbum(Instagram.getApp().currentUser.getAlbums().get(index));
 		   
 	   }
-	   
 	   public void RenameAlbum() throws Exception{
 		   
 		   int index = listView.getSelectionModel().getSelectedIndex();

@@ -10,9 +10,8 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-
 
 <AnchorPane minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Tags">
    <children>
@@ -38,21 +37,24 @@
     </MenuBar>
       <SplitPane dividerPositions="0.29797979797979796" prefHeight="600.0" prefWidth="900.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="290.0">
                <children>
-                  <Button layoutX="207.0" layoutY="74.0" mnemonicParsing="false" text="Add" />
-                  <Button layoutX="78.0" layoutY="265.0" mnemonicParsing="false" text="Back to Menu" onAction="#goBack"/>
+                  <Button layoutX="207.0" layoutY="94.0" mnemonicParsing="false" onAction="#Add" text="Add" />
+                  <Button layoutX="74.0" layoutY="404.0" mnemonicParsing="false" onAction="#goBack" text="Back to Menu" />
                   <Label layoutX="22.0" layoutY="21.0" text="Add and Remove Tags" />
-                  <TextField layoutX="14.0" layoutY="74.0" />
-                  <Button layoutX="200.0" layoutY="125.0" mnemonicParsing="false" text="Delete" />
-                  <Label layoutX="67.0" layoutY="130.0" text="Select a Tag First to" />
+                  <TextField fx:id="Key" layoutX="63.0" layoutY="74.0" prefHeight="27.0" prefWidth="124.0" />
+                  <Button layoutX="96.0" layoutY="246.0" mnemonicParsing="false" onAction="#Delete" text="Delete" />
+                  <Label layoutX="46.0" layoutY="220.0" text="Or select a tag and delete" />
+                  <TextField fx:id="Value" layoutX="63.0" layoutY="115.0" prefHeight="27.0" prefWidth="124.0" />
+                  <Label layoutX="16.0" layoutY="79.0" text="Name:" />
+                  <Label layoutX="16.0" layoutY="120.0" text="Value:" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="456.0" prefWidth="485.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="241.0" layoutX="313.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="248.0" />
                   <Separator layoutX="220.0" layoutY="1.0" orientation="VERTICAL" prefHeight="598.0" prefWidth="6.0" />
-                  <ListView layoutY="1.0" prefHeight="598.0" prefWidth="215.0" />
+                  <ListView fx:id="ListDisplay" layoutY="1.0" prefHeight="598.0" prefWidth="215.0" />
+                  <ImageView fx:id="Display" fitHeight="293.0" fitWidth="336.0" layoutX="249.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
         </items>
