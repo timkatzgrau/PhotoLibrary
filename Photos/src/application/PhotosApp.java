@@ -46,7 +46,7 @@ public class PhotosApp extends Application {
 		      System.out.print("Hits");
 
 		      listController.start();
-	
+
 		      Scene scene = new Scene(root, 900, 600);
 		      primaryStage.setScene(scene);
 		      primaryStage.setResizable(false);

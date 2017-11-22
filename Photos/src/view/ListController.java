@@ -55,6 +55,48 @@ public class ListController {
 				   Instagram insta = Instagram.getApp();
 				   Scene scene = PhotosApp.mainStage.getScene();
 				   PhotosApp.changeScene(scene, "AdminView");				   
+			   }else if(Login.getText().toLowerCase().equals("stock")) {
+				   Instagram.create();
+				   Instagram insta = Instagram.getApp();
+				   User user = Instagram.getApp().getUser("stock");
+
+				   Instagram.getApp().authenticate(user);
+
+				   Scene scene = PhotosApp.mainStage.getScene();
+				   if(Instagram.getApp().getUser("stock").getAlbums().size() < 1) {
+					   ArrayList<application.models.Photo> photos = new ArrayList<application.models.Photo>();
+					   String userDir = System.getProperty("user.dir");
+					   File file = new File(userDir+"/src/stock/stock1.jpg");
+					   File file2 = new File(userDir+"/src/stock/stock2.jpg");
+					   File file3 = new File(userDir+"/src/stock/stock3.jpeg");
+					   File file4 = new File(userDir+"/src/stock/stock4.jpeg");
+					   File file5 = new File(userDir+"/src/stock/stock5.jpg");
+					   System.out.println(userDir);
+
+					   application.models.Photo temp = new application.models.Photo(file);
+					   application.models.Photo temp2 = new application.models.Photo(file2);
+					   application.models.Photo temp3 = new application.models.Photo(file3);
+					   application.models.Photo temp4 = new application.models.Photo(file4);
+					   application.models.Photo temp5 = new application.models.Photo(file5);
+					   
+					   photos.add(temp);
+					   photos.add(temp2);
+					   photos.add(temp3);
+					   photos.add(temp4);
+					   photos.add(temp5);
+					   
+					   Instagram.getApp().createAlbum("stock");
+					   System.out.print(temp.getPhotoFileURI());
+					   Instagram.getApp().addPhoto(file, Instagram.getApp().currentUser.getAlbums().get(0));
+					   Instagram.getApp().addPhoto(file2, Instagram.getApp().currentUser.getAlbums().get(0));
+					   Instagram.getApp().addPhoto(file3, Instagram.getApp().currentUser.getAlbums().get(0));
+					   Instagram.getApp().addPhoto(file4, Instagram.getApp().currentUser.getAlbums().get(0));
+					   Instagram.getApp().addPhoto(file5, Instagram.getApp().currentUser.getAlbums().get(0));
+
+  
+				   }
+				   PhotosApp.changeScene(scene, "nonAdminView");	
+				   
 			   }else {
 				   
 				   String username = Login.getText();
