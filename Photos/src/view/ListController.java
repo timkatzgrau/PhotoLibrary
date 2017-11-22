@@ -66,11 +66,11 @@ public class ListController {
 				   if(Instagram.getApp().getUser("stock").getAlbums().size() < 1) {
 					   ArrayList<application.models.Photo> photos = new ArrayList<application.models.Photo>();
 					   String userDir = System.getProperty("user.dir");
-					   File file = new File(userDir+"/src/stock/stock1.jpg");
-					   File file2 = new File(userDir+"/src/stock/stock2.jpg");
-					   File file3 = new File(userDir+"/src/stock/stock3.jpeg");
-					   File file4 = new File(userDir+"/src/stock/stock4.jpeg");
-					   File file5 = new File(userDir+"/src/stock/stock5.jpg");
+					   File file = new File(userDir+"/Photos/src/stock/stock1.jpg");
+					   File file2 = new File(userDir+"/Photos/src/stock/stock2.jpg");
+					   File file3 = new File(userDir+"/Photos/src/stock/stock3.jpeg");
+					   File file4 = new File(userDir+"/Photos/src/stock/stock4.jpeg");
+					   File file5 = new File(userDir+"/Photos/src/stock/stock5.jpg");
 					   System.out.println(userDir);
 
 					   application.models.Photo temp = new application.models.Photo(file);
