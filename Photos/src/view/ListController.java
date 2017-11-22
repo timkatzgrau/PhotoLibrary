@@ -76,7 +76,7 @@ public class ListController {
 						   file = new File(userDir+"/src/stock/stock1.jpg");
 					   }
 					   if(!file2.exists()) {
-						   file2 = new File(userDir+"/src/stock/stock2.jpg");
+						   file2 = new File(userDir+"/src/stock/stock2.jpeg");
 					   }
 					   if(!file3.exists()) {
 						   file3 = new File(userDir+"/src/stock/stock3.jpeg");
