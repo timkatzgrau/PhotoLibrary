@@ -33,8 +33,14 @@ public class ListController {
 		
 		
 
-	   private ObservableList<String> obsList;              
-	  
+	   private ObservableList<String> obsList;      
+	   
+	   public void Quit() throws Exception {
+		   Instagram.getApp().signOut();
+
+		   Instagram.writeApp(Instagram.getApp());
+		   System.exit(0);
+	   }
 	   
 	   public void goToUserView() throws Exception {
 		   if(Login.getText().length() == 0) {
@@ -45,11 +51,14 @@ public class ListController {
 			   alert.showAndWait();
 		   }else {
 			   if(Login.getText().toLowerCase().equals("admin")) {
+				   Instagram.create();
+				   Instagram insta = Instagram.getApp();
 				   Scene scene = PhotosApp.mainStage.getScene();
 				   PhotosApp.changeScene(scene, "AdminView");				   
 			   }else {
 				   
 				   String username = Login.getText();
+				   Instagram.create();
 				   User user = Instagram.getApp().getUser(username);
 				   Instagram.getApp().authenticate(user);
 				   

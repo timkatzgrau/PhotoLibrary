@@ -9,14 +9,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 
 <AnchorPane minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Search">
    <children>
     <MenuBar prefHeight="29.0" prefWidth="900.0">
-      <menus>
-        <Menu mnemonicParsing="false" text="Quit" />
-      </menus>
-    </MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Quit" >
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Save and Exit" onAction="#Quit" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
       <children>
             <Pane prefHeight="600.0" prefWidth="900.0">

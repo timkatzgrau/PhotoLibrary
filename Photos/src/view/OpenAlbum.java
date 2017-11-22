@@ -60,6 +60,12 @@ public class OpenAlbum {
 		   
 		  
 	   }
+	   public void Quit() throws Exception {
+		   Instagram.getApp().signOut();
+
+		   Instagram.writeApp(Instagram.getApp());
+		   System.exit(0);
+	   }
 	   public void start(Album album) {
 		// set listener for the items
 		      listView
@@ -95,7 +101,7 @@ public class OpenAlbum {
 	                	for(int i = 0; i < listOfImages.size(); i++) {
 	                		if(name.equals(Integer.toString(i))) {
 	                			imageView.setImage(listOfImages.get(i));
-	    	                    setText(name);
+	    	                    setText(album.getPhotos().get(Integer.parseInt(name)).getCaption());
 	    	                    setGraphic(imageView);
 	                		}
 	                	}
@@ -147,7 +153,7 @@ public class OpenAlbum {
 	                	for(int i = 0; i < listOfImages.size(); i++) {
 	                		if(name.equals(Integer.toString(i))) {
 	                			imageView.setImage(listOfImages.get(i));
-	    	                    setText(name);
+	    	                    setText(album.getPhotos().get(Integer.parseInt(name)).getCaption());
 	    	                    setGraphic(imageView);
 	                		}
 	                	}
@@ -172,6 +178,7 @@ public class OpenAlbum {
 			       album.getPhotos().get(index).setCaption(result.toString().substring(9,result.toString().length()-1));
 			       Caption.setText(album.getPhotos().get(index).getCaption());
 			   }
+			   reload();
 		   }else {
 			   System.out.println(obsList);
 		   }
@@ -213,7 +220,7 @@ public class OpenAlbum {
 			   Alert alert = new Alert(AlertType.INFORMATION);
 			   alert.setTitle("No Photo Selected");
 			   alert.setHeaderText(
-					   "You must select a photo to move first.");
+					   "You must select a photo to edit first.");
 			   alert.showAndWait();
 		   }else {
 			   application.models.Photo photo = album.getPhotos().get(index);

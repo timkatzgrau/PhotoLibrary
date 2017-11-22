@@ -36,7 +36,12 @@ public class Create {
 		      // from an ArrayList     
 
 	   }
-	   
+	   public void Quit() throws Exception {
+		   Instagram.getApp().signOut();
+
+		   Instagram.writeApp(Instagram.getApp());
+		   System.exit(0);
+	   }
 	   public void goBack() throws Exception {
 		   Scene scene = PhotosApp.mainStage.getScene();
 		   PhotosApp.changeScene(scene, "nonAdminView");

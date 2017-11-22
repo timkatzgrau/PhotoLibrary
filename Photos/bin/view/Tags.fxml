@@ -7,7 +7,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
@@ -15,33 +14,13 @@
 
 <AnchorPane minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Tags">
    <children>
-    <MenuBar>
-      <menus>
-        <Menu mnemonicParsing="false" text="Quit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
       <SplitPane dividerPositions="0.29797979797979796" prefHeight="600.0" prefWidth="900.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="290.0">
                <children>
                   <Button layoutX="207.0" layoutY="94.0" mnemonicParsing="false" onAction="#Add" text="Add" />
                   <Button layoutX="74.0" layoutY="404.0" mnemonicParsing="false" onAction="#goBack" text="Back to Menu" />
-                  <Label layoutX="22.0" layoutY="21.0" text="Add and Remove Tags" />
+                  <Label layoutX="14.0" layoutY="43.0" text="Add and Remove Tags" />
                   <TextField fx:id="Key" layoutX="63.0" layoutY="74.0" prefHeight="27.0" prefWidth="124.0" />
                   <Button layoutX="96.0" layoutY="246.0" mnemonicParsing="false" onAction="#Delete" text="Delete" />
                   <Label layoutX="46.0" layoutY="220.0" text="Or select a tag and delete" />
@@ -59,5 +38,14 @@
             </AnchorPane>
         </items>
       </SplitPane>
+    <MenuBar prefHeight="29.0" prefWidth="900.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Quit">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#Quit" text="Save and Exit" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

@@ -98,8 +98,14 @@ public class Admin {
 		   Instagram.getApp().removeUser(listDisplay.getItems().get(index));
 		   reload();
 	   }
-	   
+	   public void Quit() throws Exception {
+		   Instagram.getApp().signOut();
+		   Instagram.writeApp(Instagram.getApp());
+		   System.exit(0);
+	   }
 	   public void goBack() throws Exception {
+		   Instagram.getApp().signOut();
+		   Instagram.writeApp(Instagram.getApp());
 		   Scene scene = PhotosApp.mainStage.getScene();
 		   PhotosApp.changeScene(scene, "login");
 	   }

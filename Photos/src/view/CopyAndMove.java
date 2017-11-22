@@ -55,6 +55,12 @@ public class CopyAndMove {
 		   
 
 	   }
+	   public void Quit() throws Exception {
+		   Instagram.getApp().signOut();
+
+		   Instagram.writeApp(Instagram.getApp());
+		   System.exit(0);
+	   }
 	   public void Move() {
 		   if(Choices.getValue() == null) {
 			   Alert alert = new Alert(AlertType.INFORMATION);

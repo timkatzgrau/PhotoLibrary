@@ -50,7 +50,6 @@ public class Tags {
 		   for(int i = 0; i < photo.getTags().size(); i++) {
 			   obsList.add(photo.getTags().get(i).toString());
 		   }
-		   
 		   ListDisplay.setItems(obsList);
 
 	   }
@@ -62,10 +61,12 @@ public class Tags {
 	   public void reload() {
 		   obsList.clear();
 		   ListDisplay.getItems().clear();
-		   
-		   for(int i = 0; i < photo.getTags().size(); i++) {
+		   for(int i = 0; i < photo.getTags().size(); i++) { 
+			   System.out.println(photo.getTags().get(i).toString());
 			   obsList.add(photo.getTags().get(i).toString());
 		   }
+		   System.out.println("jhvjhvjhvjhv"+obsList.get(0));
+
 		   ListDisplay.setItems(obsList);
 		   
 	   }
@@ -107,7 +108,12 @@ public class Tags {
 		   PhotosApp.changeScene(scene, "OpenAlbum", album);
 	   }
 	   
-	  
+	   public void Quit() throws Exception {
+		   Instagram.getApp().signOut();
+
+		   Instagram.writeApp(Instagram.getApp());
+		   System.exit(0);
+	   }
 	   
 	   
 

@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import application.Photo;
 import application.PhotosApp;
+import application.models.Instagram;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -41,8 +42,13 @@ public class UserViewController {
 		      // from an ArrayList  
 			   
 
-	}
-	   
+	   }
+	   public void Quit() throws Exception {
+		   Instagram.getApp().signOut();
+
+		   Instagram.writeApp(Instagram.getApp());
+		   System.exit(0);
+	   }
 	   
 
 

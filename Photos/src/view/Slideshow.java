@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import application.Photo;
 import application.models.Album;
+import application.models.Instagram;
 import application.PhotosApp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -71,7 +72,11 @@ public class Slideshow {
 		   Scene scene = PhotosApp.mainStage.getScene();
 		   PhotosApp.changeScene(scene, "OpenAlbum", album);
 	   }
-	   
+	   public void Quit() throws Exception {
+		   Instagram.getApp().signOut();
+		   Instagram.writeApp(Instagram.getApp());
+		   System.exit(0);
+	   }
 	  
 	   
 	   

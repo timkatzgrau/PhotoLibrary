@@ -116,7 +116,7 @@ public class Search {
 	                	for(int i = 0; i < listOfImages.size(); i++) {
 	                		if(name.equals(Integer.toString(i))) {
 	                			imageView.setImage(listOfImages.get(i));
-	    	                    setText(name);
+	    	                    setText(photoSearchResults.get(Integer.parseInt(name)).getCaption());
 	    	                    setGraphic(imageView);
 	                		}
 	                	}
@@ -155,6 +155,12 @@ public class Search {
 			   alert.showAndWait();
 		   }
 		   
+	   }
+	   public void Quit() throws Exception {
+		   Instagram.getApp().signOut();
+
+		   Instagram.writeApp(Instagram.getApp());
+		   System.exit(0);
 	   }
 	   public void AddTag() throws Exception {
 		  if(!Key.getText().equals("") && !Value.getText().equals("")) {

@@ -39,14 +39,22 @@ public class NonAdminViewController {
 		   obsList = FXCollections.observableArrayList();
 		   
 		   for(int i = 0; i < Instagram.getApp().currentUser.getAlbums().size(); i++) {
-			   obsList.add(Instagram.getApp().currentUser.getAlbums().get(i).toString());
+			   obsList.add(Instagram.getApp().currentUser.getAlbums().get(i).toString()+"   " + Instagram.getApp().currentUser.getAlbums().get(i).getPhotos().size() + " Photos   "+Instagram.getApp().currentUser.getAlbums().get(i).dateRange());
 		   }
 		   
 		   listView.setItems(obsList);
 
 	   }
-	   
+	   public void Quit() throws Exception {
+		   Instagram.getApp().signOut();
+
+		   Instagram.writeApp(Instagram.getApp());
+		   System.exit(0);
+	   }
 	   public void goBack() throws Exception {
+		   Instagram.getApp().signOut();
+
+		   Instagram.writeApp(Instagram.getApp());
 		   Scene scene = PhotosApp.mainStage.getScene();
 		   PhotosApp.changeScene(scene, "login");
 	   }
