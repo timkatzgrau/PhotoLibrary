@@ -40,7 +40,7 @@ public class Tags {
 		@FXML ListView<String> ListDisplay;
 	
 
-	   private ObservableList<String> obsList = FXCollections.observableArrayList();      
+	   public ObservableList<String> obsList = FXCollections.observableArrayList();      
 	  
 	   public void start(application.models.Photo photo, Album album) { 
 		   this.album = album;
@@ -65,8 +65,7 @@ public class Tags {
 			   System.out.println(photo.getTags().get(i).toString());
 			   obsList.add(photo.getTags().get(i).toString());
 		   }
-		   System.out.println("jhvjhvjhvjhv"+obsList.get(0));
-
+		   System.out.println(photo.getTags().get(0).toString());
 		   ListDisplay.setItems(obsList);
 		   
 	   }
