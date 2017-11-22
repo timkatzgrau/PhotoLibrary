@@ -180,7 +180,11 @@ public class OpenAlbum {
 			   }
 			   reload();
 		   }else {
-			   System.out.println(obsList);
+			   Alert alert = new Alert(AlertType.INFORMATION);
+			   alert.setTitle("No Photo Selected");
+			   alert.setHeaderText(
+					   "You must select a photo to edit first.");
+			   alert.showAndWait();
 		   }
 	   }
 	   public void Slideshow() throws Exception {

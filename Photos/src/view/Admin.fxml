@@ -12,7 +12,7 @@
       <Button  layoutX="83.0" layoutY="76.0" mnemonicParsing="false" onAction="#AddUser"  text="Add User" />
       <Button  layoutX="75.0" layoutY="141.0" mnemonicParsing="false" onAction="#DeleteUser" text="Delete User" />
       <Button  layoutX="50.0" layoutY="420.0" mnemonicParsing="false" text="Save and Logout" onAction="#goBack" />
-      <ListView fx:id="listDisplay" layoutX="227.0" layoutY="2.0" prefHeight="600.0" prefWidth="293.0" />
+      <ListView fx:id="listDisplay" layoutX="227.0" layoutY="28.0" prefHeight="600.0" prefWidth="293.0" />
    </children>
    <MenuBar prefHeight="29.0" prefWidth="900.0">
         <menus>

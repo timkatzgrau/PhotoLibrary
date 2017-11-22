@@ -71,6 +71,11 @@ public class Create {
 					   "Please choose another name.");
 			   alert.showAndWait();
 		   }else {
+			   Alert alert = new Alert(AlertType.INFORMATION);
+			   alert.setTitle("Success");
+			   alert.setHeaderText(
+					   "Your album has been created!");
+			   alert.showAndWait();
 			   Instagram.getApp().createAlbum(name);
 		   }
 

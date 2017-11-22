@@ -25,7 +25,6 @@
       </MenuBar>
       <Pane prefHeight="600.0" prefWidth="900.0">
          <children>
-            <Button layoutX="32.0" layoutY="145.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="150.0" text="Add photo" />
             <Label layoutX="56.0" layoutY="95.0" text="Create an Album" />
             <Separator layoutX="227.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="609.0" prefWidth="12.0" />
             <Button layoutX="32.0" layoutY="334.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="150.0" text="Back to Menu" onAction="#goBack"/>
