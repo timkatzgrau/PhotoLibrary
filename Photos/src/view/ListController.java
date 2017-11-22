@@ -71,6 +71,21 @@ public class ListController {
 					   File file3 = new File(userDir+"/Photos/src/stock/stock3.jpeg");
 					   File file4 = new File(userDir+"/Photos/src/stock/stock4.jpeg");
 					   File file5 = new File(userDir+"/Photos/src/stock/stock5.jpg");
+					   if(!file.exists()) {
+						   file = new File(userDir+"/src/stock/stock1.jpg");
+					   }
+					   if(!file2.exists()) {
+						   file2 = new File(userDir+"/src/stock/stock2.jpg");
+					   }
+					   if(!file3.exists()) {
+						   file3 = new File(userDir+"/src/stock/stock3.jpeg");
+					   }
+					   if(!file4.exists()) {
+						   file4 = new File(userDir+"/src/stock/stock4.jpeg");
+					   }
+					   if(!file5.exists()) {
+						   file5 = new File(userDir+"/src/stock/stock5.jpg");
+					   }
 					   System.out.println(userDir);
 
 					   application.models.Photo temp = new application.models.Photo(file);
