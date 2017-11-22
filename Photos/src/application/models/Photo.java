@@ -28,8 +28,10 @@ public class Photo implements Serializable {
 		date = file.lastModified();
 		stringDate = sdf.format(date);
 		tags = new ArrayList<Tag>();
-		
-		
+	}
+	
+	public long getDate() {
+		return date;
 	}
 	
 	public String getPhotoFileURI() {
