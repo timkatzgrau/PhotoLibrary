@@ -91,12 +91,9 @@ public class NonAdminViewController {
 			   // Traditional way to get the response value.
 			   Optional<String> result = dialog.showAndWait();
 			   if (result.isPresent()){
-			       Instagram.getApp().currentUser.getAlbums().get(index).setName(result.toString());
-			       obsList.set(index, Instagram.getApp().currentUser.getAlbums().get(index).name);
-			       for (int i = 0; i < Instagram.getApp().currentUser.getAlbums().size(); i++) {
-			    	   	System.out.println(Instagram.getApp().currentUser.getAlbums().get(i));
-			    	   	System.out.println(Instagram.getApp().getAllAlbums().get(i));
-			       }
+			       Instagram.getApp().currentUser.getAlbums().get(index).setName(result.toString().substring(9,result.toString().length()-1));
+			       obsList.set(index, Instagram.getApp().currentUser.getAlbums().get(index).name +"   " + Instagram.getApp().currentUser.getAlbums().get(index).getPhotos().size() + " Photos   "+Instagram.getApp().currentUser.getAlbums().get(index).dateRange());
+
 			   }
 		   }else {
 			   System.out.println(obsList);
