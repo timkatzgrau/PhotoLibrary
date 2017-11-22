@@ -76,7 +76,7 @@ public class Search {
 				   alert.setHeaderText("You cannot create an album of zero results");
 				   alert.showAndWait();
 			   }else {
-				   Instagram.getApp().createAlbum(result.toString(), photoSearchResults);
+				   Instagram.getApp().createAlbum(result.toString().substring(9,result.toString().length()-1), photoSearchResults);
 				   Alert alert = new Alert(AlertType.INFORMATION);
 				   alert.setTitle("Success");
 				   alert.setHeaderText("Your album has been created");
