@@ -67,7 +67,7 @@ public class ListController {
 					   ArrayList<application.models.Photo> photos = new ArrayList<application.models.Photo>();
 					   String userDir = System.getProperty("user.dir");
 					   File file = new File(userDir+"/Photos/src/stock/stock1.jpg");
-					   File file2 = new File(userDir+"/Photos/src/stock/stock2.jpg");
+					   File file2 = new File(userDir+"/Photos/src/stock/stock2.jpeg");
 					   File file3 = new File(userDir+"/Photos/src/stock/stock3.jpeg");
 					   File file4 = new File(userDir+"/Photos/src/stock/stock4.jpeg");
 					   File file5 = new File(userDir+"/Photos/src/stock/stock5.jpg");
