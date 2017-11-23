@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import application.models.*;
 
@@ -180,7 +181,7 @@ public class Instagram implements Serializable {
 		long sMillis = sDate.getTime();
 		
 		Date eDate = sdf.parse(endDate);
-		long eMillis = eDate.getTime();
+		long eMillis = eDate.getTime() + TimeUnit.DAYS.toMillis(1);
 		
 		ArrayList<Photo> haveDates = new ArrayList<Photo>();
 		
