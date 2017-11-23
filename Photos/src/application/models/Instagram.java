@@ -151,20 +151,21 @@ public class Instagram implements Serializable {
 	
 	public ArrayList<Photo> searchByTags(Tag[] searchParams) {
 		ArrayList<Photo> haveTags = new ArrayList<Photo>();
+		ArrayList<Boolean> foundTags = new ArrayList<Boolean>();
 		
 		for (int i = 0; i < currentUser.getAlbums().size(); i++) {
 			for (int j = 0; j < currentUser.getAlbums().get(i).getPhotos().size(); j++) {
+				foundTags.clear();
 				for (int z = 0; z < searchParams.length; z++) {
-					boolean found = false;
 					for (int y = 0; y < currentUser.getAlbums().get(i).getPhotos().get(j).getTags().size(); y++) {
 						if (currentUser.getAlbums().get(i).getPhotos().get(j).getTags().get(y).key.equals(searchParams[z].key) && currentUser.getAlbums().get(i).getPhotos().get(j).getTags().get(y).value.equals(searchParams[z].value)){
-							found = true;
+							foundTags.add(true);
 						}
 					}
-					
-					if(found) {
-						haveTags.add(currentUser.getAlbums().get(i).getPhotos().get(j));
-					}
+				}
+				
+				if(foundTags.size() == searchParams.length && !haveTags.contains(currentUser.getAlbums().get(i).getPhotos().get(j))) {
+					haveTags.add(currentUser.getAlbums().get(i).getPhotos().get(j));
 				}
 			}
 		}
@@ -187,7 +188,9 @@ public class Instagram implements Serializable {
 			for (int j = 0; j < currentUser.getAlbums().get(i).getPhotos().size(); j++) {
 				System.out.println(sMillis + ", " + currentUser.getAlbums().get(i).getPhotos().get(j).date + ", " + eMillis);
 				if (currentUser.getAlbums().get(i).getPhotos().get(j).date < eMillis && currentUser.getAlbums().get(i).getPhotos().get(j).date > sMillis) {
-					haveDates.add(currentUser.getAlbums().get(i).getPhotos().get(j));
+					if (!haveDates.contains(currentUser.getAlbums().get(i).getPhotos().get(j))){
+						haveDates.add(currentUser.getAlbums().get(i).getPhotos().get(j));
+					}
 				}
 			}
 		}
