@@ -28,22 +28,17 @@ public class PhotosApp extends Application {
 	public void start(Stage primaryStage) 
 			throws Exception {
 //			Instagram instagram = Instagram.getApp();
-			System.out.println("started");
 			Instagram.create();
 			Instagram instagram = Instagram.getApp();
-			System.out.println("finished");
 			mainStage = primaryStage;
 			FXMLLoader loader = new FXMLLoader();   
 		      loader.setLocation(
 		         getClass().getResource("/view/List.fxml"));
-		      System.out.print("Hits");
 
 		      AnchorPane root = (AnchorPane)loader.load();
-		      System.out.print("Hits");
 
 		      ListController listController = 
 		         loader.getController();
-		      System.out.print("Hits");
 
 		      listController.start();
 
