@@ -87,7 +87,6 @@ public class ListController {
 					   if(!file5.exists()) {
 						   file5 = new File(userDir+"/src/stock/stock5.jpg");
 					   }
-					   System.out.println(userDir);
 
 					   application.models.Photo temp = new application.models.Photo(file);
 					   application.models.Photo temp2 = new application.models.Photo(file2);
@@ -102,7 +101,6 @@ public class ListController {
 					   photos.add(temp5);
 					   
 					   Instagram.getApp().createAlbum("stock");
-					   System.out.print(temp.getPhotoFileURI());
 					   Instagram.getApp().addPhoto(file, Instagram.getApp().currentUser.getAlbums().get(0));
 					   Instagram.getApp().addPhoto(file2, Instagram.getApp().currentUser.getAlbums().get(0));
 					   Instagram.getApp().addPhoto(file3, Instagram.getApp().currentUser.getAlbums().get(0));

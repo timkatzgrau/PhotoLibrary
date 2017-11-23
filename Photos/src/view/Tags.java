@@ -61,11 +61,9 @@ public class Tags {
 	   public void reload() {
 		   obsList.clear();
 		   ListDisplay.getItems().clear();
-		   for(int i = 0; i < photo.getTags().size(); i++) { 
-			   System.out.println(photo.getTags().get(i).toString());
+		   for(int i = 0; i < photo.getTags().size(); i++) {
 			   obsList.add(photo.getTags().get(i).toString());
 		   }
-		   System.out.println(photo.getTags().get(0).toString());
 		   ListDisplay.setItems(obsList);
 		   
 	   }
@@ -77,7 +75,6 @@ public class Tags {
 			   alert.setHeaderText("Invalid Key or Value");
 			   alert.showAndWait();
 		   }else {
-			   System.out.println("== " + Value.getText());
 			   boolean exists = false;
 			   for(int i = 0; i < photo.getTags().size(); i++) {
 				   if(photo.getTags().get(i).key.equals(Key.getText()) && photo.getTags().get(i).value.equals(Value.getText())) {

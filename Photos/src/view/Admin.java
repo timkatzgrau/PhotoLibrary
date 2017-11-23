@@ -42,7 +42,6 @@ public class Admin {
 	   public void start() {     
 		   
 		   for(int i = 0; i < Instagram.getApp().getUsers().size(); i++) {
-			   System.out.println(Instagram.getApp().getUsers().get(i));
 			   obsList.add(Instagram.getApp().getUsers().get(i));
 		   }
 		   listDisplay.setItems(obsList);
@@ -55,7 +54,6 @@ public class Admin {
 		   listDisplay.getItems().clear();
 		   
 		   for(int i = 0; i < Instagram.getApp().getUsers().size(); i++) {
-			   System.out.println(Instagram.getApp().getUsers().get(i));
 			   obsList.add(Instagram.getApp().getUsers().get(i));
 		   }
 		   listDisplay.setItems(obsList);

@@ -44,8 +44,6 @@ public class Instagram implements Serializable {
 	}
 	
 	public void init() {
-		//will initialize all fields
-		//remember to change entire method for serializing
 		users = new ArrayList<User>();
 		photos = new ArrayList<Photo>();
 		albums = new ArrayList<Album>();
@@ -57,7 +55,6 @@ public class Instagram implements Serializable {
 		 oos.writeObject(iapp);
 	}
 	
-	//what is returned on the very first start
 	public static Instagram readApp()
 			throws IOException, ClassNotFoundException {
 		try {
@@ -75,7 +72,6 @@ public class Instagram implements Serializable {
 	}
 	
 	public User getUser(String username) {
-		//being used currently for logging in and setting currentuser reference
 		for (int i = 0; i < users.size(); i++) {
 			if (users.get(i).username.equals(username)) {
 				return users.get(i);
@@ -94,17 +90,12 @@ public class Instagram implements Serializable {
 	}
 	
 	public void createAlbum(String name) {
-		//get currently logged in user
-		//create album associated with currently logged in user
 		Album album = new Album(name);
 		currentUser.getAlbums().add(album);
 		albums.add(album);
 	}
 	
 	public void createAlbum(String name, ArrayList<Photo> searchResults) {
-		//get currently logged in user
-		//create album associated with currently logged in user
-		
 		Album album = new Album(name);
 		currentUser.getAlbums().add(album);
 		albums.add(album);
@@ -116,8 +107,6 @@ public class Instagram implements Serializable {
 	
 	
 	public void deleteAlbum(Album album) {
-		//get currently logged in user
-		//delete album associated with currently logged in user
 		currentUser.getAlbums().remove(album);
 		albums.remove(album);
 		
@@ -138,8 +127,6 @@ public class Instagram implements Serializable {
 	}
 	
 	public void addPhoto(File file, Album album) {
-		//add to insta photo list
-		//add to album
 		Photo photo = new Photo(file);
 		
 		photos.add(photo);
@@ -187,7 +174,6 @@ public class Instagram implements Serializable {
 		
 		for (int i = 0; i < currentUser.getAlbums().size(); i++) {
 			for (int j = 0; j < currentUser.getAlbums().get(i).getPhotos().size(); j++) {
-				System.out.println(sMillis + ", " + currentUser.getAlbums().get(i).getPhotos().get(j).date + ", " + eMillis);
 				if (currentUser.getAlbums().get(i).getPhotos().get(j).date <= eMillis && currentUser.getAlbums().get(i).getPhotos().get(j).date >= sMillis) {
 					if (!haveDates.contains(currentUser.getAlbums().get(i).getPhotos().get(j))){
 						haveDates.add(currentUser.getAlbums().get(i).getPhotos().get(j));

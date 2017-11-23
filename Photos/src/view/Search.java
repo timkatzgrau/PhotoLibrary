@@ -93,11 +93,9 @@ public class Search {
 		   Results.getItems().clear();
 		   
 		   for(int i = 0; i < results.size(); i++) {
-			   System.out.print("Hits1");
 			   obsListResults.add(Integer.toString(obsListResults.size()));
 		   }
 		   for(int i = 0; i < results.size(); i++) {
-			   System.out.print("Hits2");
 			   Image image = new Image(results.get(i).getPhotoFileURI(), 100, 100, false, false);
 			   listOfImages.add(image);
 		   }
@@ -135,7 +133,6 @@ public class Search {
 				   tagArray[i] = obsListTags.get(i);
 			   }
 			   ArrayList<application.models.Photo> results = Instagram.getApp().searchByTags(tagArray);
-			   System.out.println("This : "+ results.size());
 			   reload(results);
 			   
 		   
@@ -145,7 +142,6 @@ public class Search {
 			   
 		   
 			   ArrayList<application.models.Photo> results = Instagram.getApp().searchByDates(StartDate.getText(),EndDate.getText());
-			   System.out.println("This : "+ results.size());
 			   reload(results);
 		   
 		   } catch (Exception e) {
