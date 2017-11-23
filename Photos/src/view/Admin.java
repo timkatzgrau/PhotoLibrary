@@ -30,15 +30,25 @@ import javafx.stage.Stage;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar.ButtonData;
 
+/**
+ * @author Asad Dar
+ * @author Tim Katzgrau
+ * This class will represent the Admin controller
+ **/
 public class Admin {
 	
 		public Album album;
 		public int currentIndex = 0;
 	    @FXML ListView<User> listDisplay;   
 
-
+	    /**
+		 * observable list of users
+		 **/
 	   private ObservableList<User> obsList = FXCollections.observableArrayList();              
 	  
+	   /**
+		 * sets list of users using app
+		 **/
 	   public void start() {     
 		   
 		   for(int i = 0; i < Instagram.getApp().getUsers().size(); i++) {
@@ -48,7 +58,9 @@ public class Admin {
 		   
 	   }
 	   
-
+	   /**
+		 * reloads list of users
+		 **/
 	   public void reload() {
 		   obsList.clear();
 		   listDisplay.getItems().clear();
@@ -59,6 +71,10 @@ public class Admin {
 		   listDisplay.setItems(obsList);
 		   
 	   }
+	   
+	   /**
+		 * adds user to app
+		 **/
 	   public void AddUser() {
 		   
 		   TextInputDialog dialog = new TextInputDialog();
@@ -91,16 +107,27 @@ public class Admin {
 		   
 	   }
 	   
+	   /**
+		 * removes user from app
+		 **/
 	   public void DeleteUser() {
 		   int index = listDisplay.getSelectionModel().getSelectedIndex();
 		   Instagram.getApp().removeUser(listDisplay.getItems().get(index));
 		   reload();
 	   }
+	   
+	   /**
+		 * quits app
+		 **/
 	   public void Quit() throws Exception {
 		   Instagram.getApp().signOut();
 		   Instagram.writeApp(Instagram.getApp());
 		   System.exit(0);
 	   }
+	   
+	   /**
+		 * goes back to previous scene
+		 **/
 	   public void goBack() throws Exception {
 		   Instagram.getApp().signOut();
 		   Instagram.writeApp(Instagram.getApp());

@@ -31,6 +31,11 @@ import javafx.stage.Stage;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ButtonBar.ButtonData;
 
+/**
+ * @author Asad Dar
+ * @author Tim Katzgrau
+ * This class will represent the open album controller
+ **/
 public class OpenAlbum {
 	
 	   @FXML ListView<String> listView; 
@@ -45,7 +50,9 @@ public class OpenAlbum {
 	   public ObservableList<String> obsList = FXCollections.observableArrayList();  
 	   public ObservableList<Tag> tagList = FXCollections.observableArrayList();  
 	   
-	   
+	   /**
+	    * displays photo
+	    **/
 	   private void showItemInputDialog(Stage mainStage) {    
 		   tagList.clear();
 		   
@@ -60,12 +67,20 @@ public class OpenAlbum {
 		   
 		  
 	   }
+	   
+	   /**
+	    * quits app
+	    **/
 	   public void Quit() throws Exception {
 		   Instagram.getApp().signOut();
 
 		   Instagram.writeApp(Instagram.getApp());
 		   System.exit(0);
 	   }
+	   
+	   /**
+	    * displays album's photos in list
+	    **/
 	   public void start(Album album) {
 		// set listener for the items
 		      listView
@@ -114,18 +129,26 @@ public class OpenAlbum {
 		   }
 
 	   
-	   
+	   /**
+	    * goes back to previous scene
+	    **/
 	   public void goBack() throws Exception {
 		   Scene scene = PhotosApp.mainStage.getScene();
 		   PhotosApp.changeScene(scene, "nonAdminView");
 	   }
 	   
+	   /**
+	    * removes photo from album
+	    **/
 	   public void DeletePhoto() throws Exception {
 		   int index = listView.getSelectionModel().getSelectedIndex();		  
 		   album.getPhotos().remove(index);
 		   reload();
 	   }
 	   
+	   /**
+	    * reloads album's list of photos
+	    **/
 	   public void reload() {
 		   obsList.clear();
 		   listOfImages.clear();
@@ -163,6 +186,10 @@ public class OpenAlbum {
 	            }
 	        });
 	   }
+	   
+	   /**
+	    * edits photo's caption
+	    **/
 	   public void EditCaption() throws Exception {
 		   
 		   int index = listView.getSelectionModel().getSelectedIndex();
@@ -187,6 +214,10 @@ public class OpenAlbum {
 			   alert.showAndWait();
 		   }
 	   }
+	   
+	   /**
+	    * goes to slideshow scene
+	    **/
 	   public void Slideshow() throws Exception {
 			   if(album.getPhotos().size() == 0) {
 				   Alert alert = new Alert(AlertType.INFORMATION);
@@ -201,6 +232,9 @@ public class OpenAlbum {
 
 	   }
 	   
+	   /**
+	    * goes to copy and move scene
+	    **/
 	   public void CopyAndMove() throws Exception {
 		   int index = listView.getSelectionModel().getSelectedIndex();
 		   if(index < 0) {
@@ -216,6 +250,10 @@ public class OpenAlbum {
 		   }
 
 	   }
+	   
+	   /**
+	    * goes to tags scene
+	    **/
 	   public void Tags() throws Exception {
 		   
 		   int index = listView.getSelectionModel().getSelectedIndex();
@@ -233,6 +271,10 @@ public class OpenAlbum {
 		   }
 
 	   }
+	   
+	   /**
+	    * allows user to upload photo
+	    **/
 	   public void AddImage() throws Exception {
 		   FileChooser fileChooser = new FileChooser();
 		   fileChooser.setTitle("Open Resource File");

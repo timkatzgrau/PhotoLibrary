@@ -28,13 +28,20 @@ import javafx.stage.Stage;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar.ButtonData;
 
+/**
+ * @author Asad Dar
+ * @author Tim Katzgrau
+ * This class will represent the non admin view controller
+ **/
 public class NonAdminViewController {
 	
 
 	   @FXML ListView<String> listView;   
 	   private ObservableList<String> obsList;   
 	   
-	  
+	   /**
+	    * loads user's albums list
+	    **/
 	   public void start() {         
 		   obsList = FXCollections.observableArrayList();
 		   
@@ -45,12 +52,20 @@ public class NonAdminViewController {
 		   listView.setItems(obsList);
 
 	   }
+	   
+	   /**
+	    * quits app
+	    **/
 	   public void Quit() throws Exception {
 		   Instagram.getApp().signOut();
 
 		   Instagram.writeApp(Instagram.getApp());
 		   System.exit(0);
 	   }
+	   
+	   /**
+	    * goes back to previous scene
+	    **/
 	   public void goBack() throws Exception {
 		   Instagram.getApp().signOut();
 
@@ -59,6 +74,9 @@ public class NonAdminViewController {
 		   PhotosApp.changeScene(scene, "login");
 	   }
 	   
+	   /**
+	    * changes scene to album's contents
+	    **/
 	   public void openAlbum() throws Exception {
 		   int index = listView.getSelectionModel().getSelectedIndex();
 		   if(index >= 0) {
@@ -66,20 +84,36 @@ public class NonAdminViewController {
 			   PhotosApp.changeScene(scene, "OpenAlbum", Instagram.getApp().currentUser.getAlbums().get(index));
 		   }
 	   }
+	   
+	   /**
+	    * goes to create scene
+	    **/
 	   public void Create() throws Exception {
 		   Scene scene = PhotosApp.mainStage.getScene();
 		   PhotosApp.changeScene(scene, "Create");
 	   }
+	   
+	   /**
+	    * goes to search scene
+	    **/
 	   public void Search() throws Exception {
 		   Scene scene = PhotosApp.mainStage.getScene();
 		   PhotosApp.changeScene(scene, "Search");
 	   }
+	   
+	   /**
+	    * removes album
+	    **/
 	   public void DeleteAlbum() throws Exception{
 		   int index = listView.getSelectionModel().getSelectedIndex();
 		   obsList.remove(index);
 		   Instagram.getApp().deleteAlbum(Instagram.getApp().currentUser.getAlbums().get(index));
 		   
 	   }
+	   
+	   /**
+	    * renames album
+	    **/
 	   public void RenameAlbum() throws Exception{
 		   
 		   int index = listView.getSelectionModel().getSelectedIndex();

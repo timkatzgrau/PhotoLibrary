@@ -28,6 +28,11 @@ import javafx.stage.Stage;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar.ButtonData;
 
+/**
+ * @author Asad Dar
+ * @author Tim Katzgrau
+ * This class will represent the slideshow controller
+ **/
 public class Slideshow {
 	
 		public Album album;
@@ -42,11 +47,17 @@ public class Slideshow {
 
 	   private ObservableList<String> obsList;              
 	  
+	   /**
+	    * initializes slideshow scene
+	    **/
 	   public void start(Album album) {                
 		    this.album = album;
 		    Display.setImage(album.getPhotos().get(0).getImage());
 	   }
 	   
+	   /**
+	    * gets previous photo in album
+	    **/
 	   public void Previous() throws Exception {
 		   if(currentIndex == 0){
 			   currentIndex = album.getPhotos().size()-1;
@@ -56,6 +67,10 @@ public class Slideshow {
 			   Display.setImage(album.getPhotos().get(currentIndex).getImage());   
 		   }
 	   }
+	   
+	   /**
+	    * gets next photo in album
+	    **/
 	   public void Next() throws Exception {
 		   if(currentIndex == album.getPhotos().size()-1){
 			   currentIndex = 0;
@@ -68,10 +83,17 @@ public class Slideshow {
 		   
 	   }
 	   
+	   /**
+	    * goes back to previous scene
+	    **/
 	   public void goBack() throws Exception {
 		   Scene scene = PhotosApp.mainStage.getScene();
 		   PhotosApp.changeScene(scene, "OpenAlbum", album);
 	   }
+	   
+	   /**
+	    * quits app
+	    **/
 	   public void Quit() throws Exception {
 		   Instagram.getApp().signOut();
 		   Instagram.writeApp(Instagram.getApp());

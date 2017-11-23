@@ -25,6 +25,11 @@ import javafx.stage.Stage;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar.ButtonData;
 
+/**
+ * @author Asad Dar
+ * @author Tim Katzgrau
+ * This class will represent the user view controller
+ **/
 public class UserViewController {
 	
 
@@ -43,6 +48,10 @@ public class UserViewController {
 			   
 
 	   }
+	   
+	   /**
+	    * quits app
+	    **/
 	   public void Quit() throws Exception {
 		   Instagram.getApp().signOut();
 

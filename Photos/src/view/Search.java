@@ -31,6 +31,11 @@ import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * @author Asad Dar
+ * @author Tim Katzgrau
+ * This class will represent the search controller
+ **/
 public class Search {
 	
 
@@ -48,6 +53,9 @@ public class Search {
 	   private ObservableList<Tag> obsListTags; 
 	   private ObservableList<String> obsListResults;
 	  
+	   /**
+	    * initializes search scene
+	    **/
 	   public void start() {                
 		   obsListTags = FXCollections.observableArrayList();
 		   obsListResults = FXCollections.observableArrayList();	   
@@ -57,10 +65,17 @@ public class Search {
 
 	   }
 	   
+	   /**
+	    * goes back to previous scene
+	    **/
 	   public void goBack() throws Exception {
 		   Scene scene = PhotosApp.mainStage.getScene();
 		   PhotosApp.changeScene(scene, "nonAdminView");
 	   }
+	   
+	   /**
+	    * creates album
+	    **/
 	   public void CreateAlbum() throws Exception {
 		   TextInputDialog dialog = new TextInputDialog();
 		   dialog.setTitle("Create Album");
@@ -85,6 +100,9 @@ public class Search {
 		   }
 	   }
 	   
+	   /**
+	    * reloads scene with search results
+	    **/
 	   public void reload(ArrayList<application.models.Photo> results) {
 		   photoSearchResults.clear();
 		   photoSearchResults = results;
@@ -125,6 +143,9 @@ public class Search {
 	        });
 	   }
 	   
+	   /**
+	    * searches for photos by tags
+	    **/
 	   public void SearchTags() throws Exception {
 		   		   
 			   //Search for Pairs
@@ -137,6 +158,10 @@ public class Search {
 			   
 		   
 	   }
+	   
+	   /**
+	    * searches for photos by dates
+	    **/
 	   public void SearchDates() throws Exception {
 		   try{
 			   
@@ -152,12 +177,20 @@ public class Search {
 		   }
 		   
 	   }
+	   
+	   /**
+	    * quits app
+	    **/
 	   public void Quit() throws Exception {
 		   Instagram.getApp().signOut();
 
 		   Instagram.writeApp(Instagram.getApp());
 		   System.exit(0);
 	   }
+	   
+	   /**
+	    * adds tag to list of tags to be searched for
+	    **/
 	   public void AddTag() throws Exception {
 		  if(!Key.getText().equals("") && !Value.getText().equals("")) {
 			   Tag tag = new Tag(Key.getText(), Value.getText());

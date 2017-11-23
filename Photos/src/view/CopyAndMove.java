@@ -29,6 +29,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ButtonBar.ButtonData;
 
+/**
+ * @author Asad Dar
+ * @author Tim Katzgrau
+ * This class will represent the copy and move controller
+ **/
 public class CopyAndMove {
 		
 		public application.models.Photo photo;
@@ -45,6 +50,12 @@ public class CopyAndMove {
 
 	   private ObservableList<String> obsList;              
 	  
+	   /**
+		 * @param photo
+		 * photo to be moved
+		 * @param album
+		 * album currently viewing
+		 **/
 	   public void start(application.models.Photo photo, Album album) {  
 		   this.album = album;
 		   this.photo = photo;
@@ -55,12 +66,20 @@ public class CopyAndMove {
 		   
 
 	   }
+	   
+	   /**
+		 * quits app
+		 **/
 	   public void Quit() throws Exception {
 		   Instagram.getApp().signOut();
 
 		   Instagram.writeApp(Instagram.getApp());
 		   System.exit(0);
 	   }
+	   
+	   /**
+		 * alerts on result of moving photo
+		 **/
 	   public void Move() {
 		   if(Choices.getValue() == null) {
 			   Alert alert = new Alert(AlertType.INFORMATION);
@@ -78,6 +97,10 @@ public class CopyAndMove {
 		   }
 		   
 	   }
+	   
+	   /**
+		 * alerts on result of copying photo
+		 **/
 	   public void Copy() {
 		   if(Choices.getValue() == null) {
 			   Alert alert = new Alert(AlertType.INFORMATION);
@@ -95,6 +118,9 @@ public class CopyAndMove {
 		   }
 	   }
 	   
+	   /**
+		 * go back to previous scene
+		 **/
 	   public void goBack() throws Exception {
 		   Scene scene = PhotosApp.mainStage.getScene();
 		   PhotosApp.changeScene(scene, "OpenAlbum", album);

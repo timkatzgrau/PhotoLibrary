@@ -25,6 +25,11 @@ import javafx.stage.Stage;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar.ButtonData;
 
+/**
+ * @author Asad Dar
+ * @author Tim Katzgrau
+ * This class will represent the create controller
+ **/
 public class Create {
 	
 		@FXML TextField Name;
@@ -36,17 +41,28 @@ public class Create {
 		      // from an ArrayList     
 
 	   }
+	   
+	   /**
+	    * quits app
+	    **/
 	   public void Quit() throws Exception {
 		   Instagram.getApp().signOut();
 
 		   Instagram.writeApp(Instagram.getApp());
 		   System.exit(0);
 	   }
+	   
+	   /**
+	    * goes back to previous scene
+	    **/
 	   public void goBack() throws Exception {
 		   Scene scene = PhotosApp.mainStage.getScene();
 		   PhotosApp.changeScene(scene, "nonAdminView");
 	   }
 	   
+	   /**
+	    * creates album
+	    **/
 	   public void SaveAlbum() throws Exception {
 		   String name = Name.getText();
 		   boolean nameExists = false;

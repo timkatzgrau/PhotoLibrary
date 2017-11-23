@@ -20,11 +20,22 @@ import view.NonAdminViewController;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 
-
+/**
+ * @author Asad Dar
+ * @author Tim Katzgrau
+ * This class will represent the Photo Album app starting point
+ **/
 public class PhotosApp extends Application {
 	
+	/**
+	 * stage to be set
+	 **/
 	public static Stage mainStage;
 	
+	/**
+	 * @param primaryStage
+	 * stage to begin app
+	 **/
 	public void start(Stage primaryStage) 
 			throws Exception {
 //			Instagram instagram = Instagram.getApp();
@@ -49,6 +60,17 @@ public class PhotosApp extends Application {
 			      
 
 	}
+	
+	/**
+	 * @param stage
+	 * scene used
+	 * @param s
+	 * scene to change to
+	 * @param photo
+	 * photo to pass to scene
+	 * @param album
+	 * album containing photo
+	 **/
 	public static void changeScene(Scene stage, String s, application.models.Photo photo, Album album) throws Exception{
 		AnchorPane root;
 		if(s.equals("CopyAndMove")) {
@@ -85,6 +107,15 @@ public class PhotosApp extends Application {
 	      mainStage.setResizable(false);
 	      mainStage.show(); 
 	}
+	
+	/**
+	 * @param stage
+	 * scene used
+	 * @param s
+	 * scene to change to
+	 * @param album
+	 * album currently being used
+	 **/
 	public static void changeScene(Scene stage, String s, Album album) throws Exception {
 		AnchorPane root;
 		if(s.equals("OpenAlbum")) {
@@ -124,6 +155,12 @@ public class PhotosApp extends Application {
 	      mainStage.show(); 
 	}
 	
+	/**
+	 * @param stage
+	 * scene used
+	 * @param s
+	 * scene to be changed to
+	 **/
 	public static void changeScene(Scene stage, String s) 
 			throws Exception {
 				AnchorPane root;

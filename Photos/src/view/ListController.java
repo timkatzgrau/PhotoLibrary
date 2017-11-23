@@ -26,6 +26,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar.ButtonData;
 import application.models.*;
 
+/**
+ * @author Asad Dar
+ * @author Tim Katzgrau
+ * This class will represent the list controller
+ **/
 public class ListController {
 	
 		@FXML TextField Login;
@@ -35,6 +40,9 @@ public class ListController {
 
 	   private ObservableList<String> obsList;      
 	   
+	   /**
+	    * quits app
+	    **/
 	   public void Quit() throws Exception {
 		   Instagram.getApp().signOut();
 
@@ -42,6 +50,9 @@ public class ListController {
 		   System.exit(0);
 	   }
 	   
+	   /**
+	    * logs user in
+	    **/
 	   public void goToUserView() throws Exception {
 		   if(Login.getText().length() == 0) {
 			   Alert alert = new Alert(AlertType.INFORMATION);
