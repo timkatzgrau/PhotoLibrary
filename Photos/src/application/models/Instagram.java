@@ -187,7 +187,7 @@ public class Instagram implements Serializable {
 		for (int i = 0; i < currentUser.getAlbums().size(); i++) {
 			for (int j = 0; j < currentUser.getAlbums().get(i).getPhotos().size(); j++) {
 				System.out.println(sMillis + ", " + currentUser.getAlbums().get(i).getPhotos().get(j).date + ", " + eMillis);
-				if (currentUser.getAlbums().get(i).getPhotos().get(j).date < eMillis && currentUser.getAlbums().get(i).getPhotos().get(j).date > sMillis) {
+				if (currentUser.getAlbums().get(i).getPhotos().get(j).date <= eMillis && currentUser.getAlbums().get(i).getPhotos().get(j).date >= sMillis) {
 					if (!haveDates.contains(currentUser.getAlbums().get(i).getPhotos().get(j))){
 						haveDates.add(currentUser.getAlbums().get(i).getPhotos().get(j));
 					}
